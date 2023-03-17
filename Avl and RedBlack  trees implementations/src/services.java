@@ -16,7 +16,13 @@ public class services {
         System.out.print(n.key + " ");
     }
     ///////////////////////////////////////////////////
-
+    void inorderRec(avlnode root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.key + " -> ");
+            inorderRec(root.right);
+        }
+    }
     ////////////////////////////////////////////////////
 
 

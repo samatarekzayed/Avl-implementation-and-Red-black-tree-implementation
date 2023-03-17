@@ -86,13 +86,7 @@ class avl {
         return root;
     }
 
-    void inorderRec(avlnode root) {
-        if (root != null) {
-            inorderRec(root.left);
-            System.out.print(root.key + " -> ");
-            inorderRec(root.right);
-        }
-    }
+
     ///////////////////////////////////////////////////////////////
     avlnode delete(avlnode root, int key){
 
