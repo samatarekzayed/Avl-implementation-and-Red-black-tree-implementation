@@ -1,6 +1,6 @@
 
 class avl {
-    private avlnode root = null;
+    avlnode root = null;
     private int size = 0;
     public avl()
     {
@@ -28,15 +28,27 @@ class avl {
         return n.height;
     }
     ///////////////////////////////////////////////////////////////////
-    avlnode rightRotate(avlnode n) {
-
-        return null;
-    }
-
-    /////////////////////////////////////////////////////////////
     avlnode leftRotate(avlnode n) {
-
-        return null;
+        avlnode node2 = n.right;
+        n.right = node2.left;
+        node2.left = n;
+        n.height = getMaxHeight( height( n.left ), height( n.right ) ) + 1;
+        node2.height = getMaxHeight( height( node2.right ), n.height ) + 1;
+        return node2;
+    }
+    ////////////////////////////////////////////////////////////
+    private int getMaxHeight(int leftNodeHeight, int rightNodeHeight)
+    {
+        return Math.max(leftNodeHeight, rightNodeHeight);
+    }
+    /////////////////////////////////////////////////////////////
+    avlnode rightRotate(avlnode n) {
+        avlnode node1 = n.left;
+        n.left = node1.right;
+        node1.right = n;
+        n.height = getMaxHeight( height( n.left ), height( n.right ) ) + 1;
+        node1.height = getMaxHeight( height( node1.left ), n.height ) + 1;
+        return node1;
     }
 
     //////////////////////////////////////////////////////////////
@@ -70,10 +82,17 @@ class avl {
                 }
             }
         }
-            root.height = Math.max(height(root.left), height(root.right)) + 1;
-            return root;
+        root.height = Math.max(height(root.left), height(root.right)) + 1;
+        return root;
     }
 
+    void inorderRec(avlnode root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.key + " -> ");
+            inorderRec(root.right);
+        }
+    }
     ///////////////////////////////////////////////////////////////
     avlnode delete(avlnode root, int key){
 
