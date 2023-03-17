@@ -1,6 +1,6 @@
 
 public class avlnode {
-    int key;//value in numbers
+    Integer key;//value in numbers
     String word;// value in words will be used in dictionary
     int height;
     avlnode left;
