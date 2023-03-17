@@ -11,7 +11,6 @@ class Main{
         tree.insertElement(7);
         System.out.println(tree.root.right.right.height);
 
-
     }
 
 }

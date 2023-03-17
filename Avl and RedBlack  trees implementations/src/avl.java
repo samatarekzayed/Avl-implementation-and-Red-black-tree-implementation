@@ -1,16 +1,16 @@
 
 class avl {
     avlnode root;
+    int size;
     public avl()
     {
         this.root = null;
     }
     //////////////////////////////////////////////////////////
-    int balanced(avlnode u) {
-        if (u == null)
-            return 0;
-
-        return getHeight(u.left) - getHeight(u.right);
+    boolean balanced(avlnode u) {
+//        if (u == null)
+//            return false;
+        return Math.abs(getHeight(u.left) - getHeight(u.right)) < 2;
     }
 
     ////////////////////////////////////////////////////////////
@@ -54,37 +54,34 @@ class avl {
         this.root=insert(root,key);
     }
     private avlnode insert(avlnode root, int key) {
-        //avlnode newNode=new avlnode(key);
-        if(root!=null){
-            if (key > root.key) {
-                root.right = insert((root.right), key);
-                if (balanced(root) == -2){
-                    if(key>root.right.right.key)
-                        leftRotate(root);
-                    else {
-                        rightRotate(root.right);
-                        leftRotate(root);
-                    }
-                }
-            }
-            else {
-                root.left = insert(root.left, key);
-                if(balanced(root)==2){
-                    if(key< root.left.left.key)
-                        rightRotate(root);
-                    else{
-                        leftRotate(root.left);
-                        rightRotate(root);
-                        {
-                }
-            }
-
+        if(root==null){ //reach leaf
+            root = new avlnode(key);
+            size++;
         }
-        else  //reach leaf
-            root=new avlnode(key);
-
-        root.height = Math.max(getHeight(root.left), getHeight(root.right)) + 1;
-        return root;
+        else if (key > root.key) {
+            root.right = insert((root.right), key);
+            if (!balanced(root)) {
+                if (key > root.right.key)
+                    root=leftRotate(root);
+                else {
+                    root.right = rightRotate(root.right);
+                    root=leftRotate(root);
+                }
+            }
+        }
+        else {
+            root.left = insert(root.left, key);
+            if (!balanced(root)) {
+                if (key < root.left.key)
+                    root=rightRotate(root);
+                else {
+                    root.left = leftRotate(root.left);
+                    root=rightRotate(root);
+                }
+            }
+        }
+            root.height = Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+            return root;
     }
 
     ///////////////////////////////////////////////////////////////
@@ -98,7 +95,7 @@ class avl {
     ///////////////////////////////////////////////////////////////
     int size(avlnode n)
     {
-        return 0;
+        return this.size;
     }
 
     ///////////////////////////////////////////////////////////////////
