@@ -7,17 +7,15 @@ class avl {
         this.root = null;
     }
     //////////////////////////////////////////////////////////
-    boolean balanced(avlnode u) {
+    boolean isBalanced(avlnode u) {
 //        if (u == null)
 //            return false;
-        return Math.abs(getHeight(u.left) - getHeight(u.right)) < 2;
+        return Math.abs(height(u.left) - height(u.right)) >= 2;
     }
 
     ////////////////////////////////////////////////////////////
     avlnode search(avlnode root, int key)
     {
-
-
 
         return null;
     }
@@ -26,7 +24,7 @@ class avl {
     int height(avlnode n)
     {
         if (n == null)
-            return 0;
+            return -1;
         return n.height;
     }
     ///////////////////////////////////////////////////////////////////
@@ -41,14 +39,6 @@ class avl {
         return null;
     }
 
-    ///////////////////////////////////////////////////////////////
-    private int getHeight(avlnode node )
-    {
-        if(node==null)
-            return -1;
-        else
-            return node.height;
-    }
     //////////////////////////////////////////////////////////////
     public void insertElement(int key){
         this.root=insert(root,key);
@@ -60,7 +50,7 @@ class avl {
         }
         else if (key > root.key) {
             root.right = insert((root.right), key);
-            if (!balanced(root)) {
+            if (isBalanced(root)) {
                 if (key > root.right.key)
                     root=leftRotate(root);
                 else {
@@ -71,7 +61,7 @@ class avl {
         }
         else {
             root.left = insert(root.left, key);
-            if (!balanced(root)) {
+            if (isBalanced(root)) {
                 if (key < root.left.key)
                     root=rightRotate(root);
                 else {
@@ -80,7 +70,7 @@ class avl {
                 }
             }
         }
-            root.height = Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+            root.height = Math.max(height(root.left), height(root.right)) + 1;
             return root;
     }
 
