@@ -1,5 +1,6 @@
 public interface Tree<key> {
 
+
 // You are required to implement both AVL and Red Black trees that can deal with keys of any
 // comparable type (generic). You need to implement the following operations in both of them:
 

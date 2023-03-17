@@ -1,7 +1,7 @@
 
 class avl {
-    avlnode root;
-    int size;
+    private avlnode root = null;
+    private int size = 0;
     public avl()
     {
         this.root = null;

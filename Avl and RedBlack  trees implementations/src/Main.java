@@ -9,7 +9,6 @@ class Main{
         tree.insertElement(12);
         tree.insertElement(6);
         tree.insertElement(7);
-        System.out.println(tree.root.right.right.height);
 
     }
 
