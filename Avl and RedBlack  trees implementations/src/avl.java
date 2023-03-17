@@ -78,7 +78,7 @@ class avl {
     avlnode delete(avlnode root, int key){
 
 
-//testt
+
 
         return root;
     }
