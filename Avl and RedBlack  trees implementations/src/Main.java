@@ -12,6 +12,7 @@ class Main{
         tree.insertElement(7);
         s.inorderRec(tree.root);
         System.out.println(tree.root.left.height);
+        s.print2D(tree.root);
 
 
 

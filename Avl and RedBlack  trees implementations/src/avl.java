@@ -1,4 +1,4 @@
-import static sun.swing.MenuItemLayoutHelper.max;
+//import static sun.swing.MenuItemLayoutHelper.max;
 
 class avl {
     avlnode root = null;
@@ -12,8 +12,7 @@ class avl {
     int balanced(avlnode u) {
         if (u == null)
             return 0;
-
-        return u.left.height - u.right.height;
+        return height(u.left) - height(u.right);
     }
     ////////////////////////////////////////////////////////////
     avlnode search(avlnode root, int key)
@@ -64,7 +63,7 @@ class avl {
         }
         else if (key > root.key) {
             root.right = insert((root.right), key);
-            if (isBalanced(root)) {
+            if (Math.abs(balanced(root))==2) {
                 if (key > root.right.key)
                     root=leftRotate(root);
                 else {
@@ -75,7 +74,7 @@ class avl {
         }
         else {
             root.left = insert(root.left, key);
-            if (isBalanced(root)) {
+            if (Math.abs(balanced(root))==2) {
                 if (key < root.left.key)
                     root=rightRotate(root);
                 else {
@@ -139,7 +138,7 @@ class avl {
         }
         //after returning from the recursive call
         //7n-update el height
-        root.height=max(root.left.height,root.right.height)+1;
+        root.height=Math.max(root.left.height,root.right.height)+1;
         //n-check lw 7sal moshkla flbalance bt3 elnode
         int diffLR=balanced(root);
         if (diffLR>1){
