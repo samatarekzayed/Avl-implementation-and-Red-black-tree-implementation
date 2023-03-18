@@ -7,7 +7,6 @@ public class avlNode<type> implements Comparable<avlNode<type>>{
         key = k1;
     }
 
-
     public boolean isRightChild() {
         return isRightChild;
     }

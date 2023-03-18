@@ -16,7 +16,6 @@ public class services <type>{
         System.out.print(n.key + " ");
     }
 
-
     ///////////////////////////////////////////////////
     void inorderRec(avlNode<type> root) {
         if (root != null) {

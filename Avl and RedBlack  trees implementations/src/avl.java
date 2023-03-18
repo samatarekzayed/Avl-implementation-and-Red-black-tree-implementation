@@ -52,26 +52,26 @@ class avl<type> implements Tree<type> {
 
 
 
-    avlNode<type> leftRotate(avlNode<type> n) {
+    private avlNode<type> leftRotate(avlNode<type> n) {
         avlNode<type> node2 = n.right;
         n.right = node2.left;
         node2.left = n;
-        n.height = getMaxHeight( height( n.left ), height( n.right ) ) + 1;
-        node2.height = getMaxHeight( height( node2.right ), n.height ) + 1;
+        n.height = Math.max( height( n.left ), height( n.right ) ) + 1;
+        node2.height = Math.max( height( node2.right ), n.height ) + 1;
         return node2;
     }
 
-    private int getMaxHeight(int leftNodeHeight, int rightNodeHeight)
-    {
-        return Math.max(leftNodeHeight, rightNodeHeight);
-    }
+//    private int getMaxHeight(int leftNodeHeight, int rightNodeHeight)
+//    {
+//        return Math.max(leftNodeHeight, rightNodeHeight);
+//    }
 
-    avlNode<type> rightRotate(avlNode<type> n) {
+    private avlNode<type> rightRotate(avlNode<type> n) {
         avlNode<type> node1 = n.left;
         n.left = node1.right;
         node1.right = n;
-        n.height = getMaxHeight( height( n.left ), height( n.right ) ) + 1;
-        node1.height = getMaxHeight( height( node1.left ), n.height ) + 1;
+        n.height = Math.max( height( n.left ), height( n.right ) ) + 1;
+        node1.height = Math.max( height( node1.left ), n.height ) + 1;
         return node1;
     }
     @Override
