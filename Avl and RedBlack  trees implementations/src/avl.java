@@ -31,6 +31,8 @@ class avl<type> implements Tree<type> {
             return -1;
     }
 
+
+
     @Override
     public int height(avlNode<type> n) {
         if (n == null)
