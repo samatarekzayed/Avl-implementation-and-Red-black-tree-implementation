@@ -26,7 +26,7 @@ class avl<type> implements Tree<type> {
     @Override
     public int height() {
         if(root!=null)
-            return Math.max(height(root.left),height(root.left))+1;
+            return Math.max(height(root.getLeft()),height(root.getRight()))+1;
         else
             return -1;
     }
@@ -47,13 +47,13 @@ class avl<type> implements Tree<type> {
     int balanced(avlNode<type> u) {
         if (u == null)
             return 0;
-        return height(u.left) - height(u.right);
+        return height(u.getLeft()) - height(u.getRight());
     }
 
 
 
     private avlNode<type> leftRotate(avlNode<type> n) {
-        avlNode<type> node2 = n.right;
+        avlNode<type> node2 = n.getRight();
         n.right = node2.left;
         node2.left = n;
         n.height = Math.max( height( n.left ), height( n.right ) ) + 1;

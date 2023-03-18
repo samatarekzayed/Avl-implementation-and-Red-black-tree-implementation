@@ -1,9 +1,9 @@
 public class services <type>{
     void preorder(avlNode<type> n) {
         if (n != null) {
-            System.out.print(n.key + " ");
-            preorder(n.left);
-            preorder(n.right);
+            System.out.print(n.getKey() + " ");
+            preorder(n.getLeft());
+            preorder(n.getRight());
         }
     }
     ///////////////////////////////////////////////////
@@ -11,17 +11,17 @@ public class services <type>{
     {
         if (n == null)
             return;
-        postorder(n.left);
-        postorder(n.right);
-        System.out.print(n.key + " ");
+        postorder(n.getLeft());
+        postorder(n.getRight());
+        System.out.print(n.getKey() + " ");
     }
 
     ///////////////////////////////////////////////////
     void inorderRec(avlNode<type> root) {
         if (root != null) {
-            inorderRec(root.left);
-            System.out.print(root.key + " -> ");
-            inorderRec(root.right);
+            inorderRec(root.getLeft());
+            System.out.print(root.getKey() + " -> ");
+            inorderRec(root.getRight());
         }
     }
 
@@ -37,17 +37,17 @@ public class services <type>{
         space += COUNT;
 
         // Process right child first
-        print2DUtil(root.right, space);
+        print2DUtil(root.getRight(), space);
 
         // Print current node after space
         // count
         System.out.print("\n");
         for (int i = COUNT; i < space; i++)
             System.out.print(" ");
-        System.out.print(root.key + "\n");
+        System.out.print(root.getKey() + "\n");
 
         // Process left child
-        print2DUtil(root.left, space);
+        print2DUtil(root.getLeft(), space);
     }
 
     // Wrapper over print2DUtil()
