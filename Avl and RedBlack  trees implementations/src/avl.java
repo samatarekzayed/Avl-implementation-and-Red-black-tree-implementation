@@ -90,7 +90,7 @@ class avl<type> implements Tree<type> {
         return node1;
     }
     @Override
-    public boolean insert(type key){
+    public  boolean insert(type key){
         int oSize=this.size;
         this.root=insertEllement(root,key);
         return oSize != this.size;
