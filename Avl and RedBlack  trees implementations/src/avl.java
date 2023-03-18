@@ -29,11 +29,6 @@ class avl<type> implements Tree<type> {
     }
 
     @Override
-    public int height() {
-        return 0;
-    }
-
-    @Override
     public int height(avlNode<type> n) {
         if (n == null)
             return -1;
@@ -85,12 +80,10 @@ class avl<type> implements Tree<type> {
             root = new avlNode<type>(key);
             size++;
         }
-        //key > root.key
-        else if (root.compareToKey(key)==-1) {
+        else if (key > root.key) {
             root.right = insert((root.right), key);
             if (Math.abs(balanced(root))==2) {
-                //key > root.right.key
-                if (root.right.compareToKey(key)==-1)
+                if (key > root.right.key)
                     root=leftRotate(root);
                 else {
                     root.right = rightRotate(root.right);
@@ -101,8 +94,7 @@ class avl<type> implements Tree<type> {
         else {
             root.left = insert(root.left, key);
             if (Math.abs(balanced(root))==2) {
-                //key < root.left.key
-                if (root.left.compareToKey(key)==1)
+                if (key < root.left.key)
                     root=rightRotate(root);
                 else {
                     root.left = leftRotate(root.left);
@@ -121,17 +113,15 @@ class avl<type> implements Tree<type> {
         return n;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    avlNode<type> delete(avlNode<type> root, type key){
+    avlNode<type> delete(avlNode<type> root, int key){
         if (root==null){
             //tree has no nodes or element wasn't found
             return root;
         }
-        //key< root.key
-        if (root.compareToKey(key)==1){
+        if (key< root.key){
             root.left=delete(root.left,key);
         }
-        //key> root.key
-        else if (root.compareToKey(key)==-1){
+        else if (key> root.key){
             root.right=delete(root.right,key);
         }
         else{
@@ -164,9 +154,9 @@ class avl<type> implements Tree<type> {
                 root.right=delete(root.right,key);
             }
         }
-////        if (root==null){
-////            return root;
-////        }
+//        if (root==null){
+//            return root;
+//        }
         //after returning from the recursive call
         //the height is updated and the balance condition is checked
 
