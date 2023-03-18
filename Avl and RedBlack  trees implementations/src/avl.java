@@ -10,7 +10,9 @@ class avl<type> implements Tree<type> {
 
     @Override
     public boolean delete(type k) {
-        return false;
+        int prv_size=this.size;
+        this.root=delete(this.root,k);
+        return  (prv_size!=this.size);
     }
 
     @Override
@@ -211,7 +213,7 @@ class avl<type> implements Tree<type> {
                 return leftRotate(root);
             }
         }
-        this.root=root; //elsatr da mesh by updateeeee en el root bt3t eltree tb2a el root da m3rfshh lehhh!!!!!!!!!!!!  :(
+//        this.root=root; //elsatr da mesh by updateeeee en el root bt3t eltree tb2a el root da m3rfshh lehhh!!!!!!!!!!!!  :(
         // f bdtar wna b test a call
         //tree.root=tree.delete(tree.root,7);
         // ba assign el retun value lel root bt3t eltree y3ny
