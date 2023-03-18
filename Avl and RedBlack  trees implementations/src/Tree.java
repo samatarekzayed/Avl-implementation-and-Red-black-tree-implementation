@@ -27,4 +27,6 @@ public interface Tree<key> {
 // node. Can run up to O(n).
 
     public int height();
+
+    int height(avlNode<key> n);
 }
