@@ -9,11 +9,6 @@ class avl<type> implements Tree<type> {
     }
 
     @Override
-    public boolean insert(type k) {
-        return false;
-    }
-
-    @Override
     public boolean delete(type k) {
         return false;
     }
@@ -71,19 +66,22 @@ class avl<type> implements Tree<type> {
         node1.height = getMaxHeight( height( node1.left ), n.height ) + 1;
         return node1;
     }
-
-    public void insertElement(type key){
-        this.root=insert(root,key);
+    //@Override
+    public boolean insert(type key){
+        this.root=insertEllement(root,key);
+        return true;
     }
-    private avlNode<type> insert(avlNode<type> root, type key) {
+    private avlNode<type> insertEllement(avlNode<type> root, type key) {
         if(root==null){ //reach leaf
             root = new avlNode<type>(key);
             size++;
         }
-        else if (key > root.key) {
-            root.right = insert((root.right), key);
+        //key > root.key
+        else if (root.compareToKey(key)==-1) {
+            root.right = insertEllement((root.right), key);
             if (Math.abs(balanced(root))==2) {
-                if (key > root.right.key)
+                //key > root.right.key
+                if (root.right.compareToKey(key)==-1)
                     root=leftRotate(root);
                 else {
                     root.right = rightRotate(root.right);
@@ -92,9 +90,10 @@ class avl<type> implements Tree<type> {
             }
         }
         else {
-            root.left = insert(root.left, key);
+            root.left = insertEllement(root.left, key);
             if (Math.abs(balanced(root))==2) {
-                if (key < root.left.key)
+                //key < root.left.key
+                if (root.left.compareToKey(key)==1)
                     root=rightRotate(root);
                 else {
                     root.left = leftRotate(root.left);
@@ -113,15 +112,17 @@ class avl<type> implements Tree<type> {
         return n;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    avlNode<type> delete(avlNode<type> root, int key){
+    avlNode<type> delete(avlNode<type> root, type key){
         if (root==null){
             //tree has no nodes or element wasn't found
             return root;
         }
-        if (key< root.key){
+        //key< root.key
+        if (root.compareToKey(key)==1){
             root.left=delete(root.left,key);
         }
-        else if (key> root.key){
+        //key> root.key
+        else if (root.compareToKey(key)==-1){
             root.right=delete(root.right,key);
         }
         else{
