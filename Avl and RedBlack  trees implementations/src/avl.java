@@ -19,9 +19,11 @@ class avl<type> implements Tree<type> {
         while(ptr != null) {
             if (ptr.compareToKey(k) == 0) {
                 return true;
-            } else if (ptr.compareToKey(k) == 1) {
+            } else if (ptr.compareToKey(k) == -1) {
+                System.out.println(ptr.key);
                 ptr = ptr.right;
             } else {
+                System.out.println(ptr.key);
                 ptr = ptr.left;
             }
         }
