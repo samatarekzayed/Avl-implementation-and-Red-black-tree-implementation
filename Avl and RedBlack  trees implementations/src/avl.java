@@ -20,7 +20,15 @@ class avl<type> implements Tree<type> {
 
     @Override
     public int size() {
-        return 0;
+        return this.size;
+    }
+
+    @Override
+    public int height() {
+        if(root!=null)
+            return Math.max(height(root.left),height(root.left))+1;
+        else
+            return -1;
     }
 
     @Override
@@ -68,6 +76,8 @@ class avl<type> implements Tree<type> {
     }
     @Override
     public boolean insert(type key){
+        if(insertEllement(root,key)==null)
+            return false;
         this.root=insertEllement(root,key);
         return true;
     }
@@ -89,7 +99,7 @@ class avl<type> implements Tree<type> {
                 }
             }
         }
-        else {
+        else if (root.compareToKey(key)==1){
             root.left = insertEllement(root.left, key);
             if (Math.abs(balanced(root))==2) {
                 //key < root.left.key
@@ -100,6 +110,9 @@ class avl<type> implements Tree<type> {
                     root=rightRotate(root);
                 }
             }
+        }
+        else {
+            return null;
         }
         root.height = Math.max(height(root.left), height(root.right)) + 1;
         return root;
