@@ -1,11 +1,14 @@
 public class RBNode<type> implements Comparable<RBNode<type>>{
 
     public type key;
-    public avlNode<type> parent;
-    public avlNode<type> left;
-    public avlNode<type> right;
+    public RBNode<type> parent;
+    public RBNode<type> left;
+    public RBNode<type> right;
     public int height;
     public boolean isRed;
+
+    public boolean isRightChild;
+
 
 
     RBNode(type key){
@@ -66,27 +69,27 @@ public class RBNode<type> implements Comparable<RBNode<type>>{
         this.key = key;
     }
 
-    public avlNode<type> getParent() {
+    public RBNode<type> getParent() {
         return parent;
     }
 
-    public void setParent(avlNode<type> parent) {
+    public void setParent(RBNode<type> parent) {
         this.parent = parent;
     }
 
-    public avlNode<type> getLeft() {
+    public RBNode<type> getLeft() {
         return left;
     }
 
-    public void setLeft(avlNode<type> left) {
+    public void setLeft(RBNode<type> left) {
         this.left = left;
     }
 
-    public avlNode<type> getRight() {
+    public RBNode<type> getRight() {
         return right;
     }
 
-    public void setRight(avlNode<type> right) {
+    public void setRight(RBNode<type> right) {
         this.right = right;
     }
 
@@ -104,6 +107,14 @@ public class RBNode<type> implements Comparable<RBNode<type>>{
 
     public void setRed(boolean red) {
         isRed = red;
+    }
+
+    public boolean isRightChild() {
+        return isRightChild;
+    }
+
+    public void setIsRightChild(boolean rightChild) {
+        isRightChild = rightChild;
     }
 
 

@@ -28,5 +28,4 @@ public interface Tree<key> {
 
     public int height();
 
-    int height(avlNode<key> n);
 }

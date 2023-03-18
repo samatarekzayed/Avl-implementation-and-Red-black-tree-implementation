@@ -47,8 +47,7 @@ class avl<type> implements Tree<type> {
 
 
 
-    @Override
-    public int height(avlNode<type> n) {
+    private int height(avlNode<type> n) {
         if (n == null)
             return -1;
         return n.height;
@@ -60,7 +59,7 @@ class avl<type> implements Tree<type> {
 ////            return false;
 //        return Math.abs(height(u.left) - height(u.right)) >= 2;
 //    }
-    int balanced(avlNode<type> u) {
+    private int balanced(avlNode<type> u) {
         if (u == null)
             return 0;
         return height(u.left) - height(u.right);
@@ -130,14 +129,14 @@ class avl<type> implements Tree<type> {
         return root;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    avlNode<type> inorderSucessor(avlNode<type> n){
+    private avlNode<type> inorderSucessor(avlNode<type> n){
         while (n.left!=null){
             n=n.left;
         }
         return n;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    avlNode<type> delete(avlNode<type> root, type key){
+    private avlNode<type> delete(avlNode<type> root, type key){
         if (root==null){
             //tree has no nodes or element wasn't found
             return root;
@@ -220,7 +219,7 @@ class avl<type> implements Tree<type> {
         return root;
     }
 
-    int size(avlNode<type> n)
+    private int size(avlNode<type> n)
     {
         return this.size;
     }
