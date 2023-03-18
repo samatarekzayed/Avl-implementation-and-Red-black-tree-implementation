@@ -66,7 +66,7 @@ class avl<type> implements Tree<type> {
         node1.height = getMaxHeight( height( node1.left ), n.height ) + 1;
         return node1;
     }
-    //@Override
+    @Override
     public boolean insert(type key){
         this.root=insertEllement(root,key);
         return true;
