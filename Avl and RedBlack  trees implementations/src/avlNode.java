@@ -43,6 +43,7 @@ public class avlNode<type> implements Comparable<avlNode<type>>{
     }
 
 
+    //when you want to compare node to the key call the function compareTo(key);
     public int compareToKey(type o) {
         int compare;
         if (o instanceof String && this.key instanceof String) {

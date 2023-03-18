@@ -20,6 +20,16 @@ class avl<type> implements Tree<type> {
 
     @Override
     public boolean search(type k) {
+        avlNode<type> ptr = root;
+        while(ptr != null) {
+            if (ptr.compareToKey(k) == 0) {
+                return true;
+            } else if (ptr.compareToKey(k) == 1) {
+                ptr = ptr.right;
+            } else {
+                ptr = ptr.left;
+            }
+        }
         return false;
     }
 
@@ -29,10 +39,10 @@ class avl<type> implements Tree<type> {
     }
 
     @Override
-    public int height(avlNode<type> n) {
-        if (n == null)
+    public int height() {
+        if (this.root == null)
             return -1;
-        return n.height;
+        return this.root.height;
     }
 
     //////////////////////////////////////////////////////////
