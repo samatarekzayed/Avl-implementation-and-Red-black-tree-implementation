@@ -42,6 +42,29 @@ public class AvlNode<type> implements Comparable<AvlNode<type>>{
         return 0; // return any other value as per your requirement
     }
 
+
+    public int compareToKey(type o) {
+        int compare;
+        if (o instanceof String && this.key instanceof String) {
+            if (((String) this.key).compareTo((String) o) == 0) {
+                return 0;
+            } else if (((String) this.key).compareTo((String) o) > 0) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        else if (o instanceof Integer && this.key instanceof Integer) {
+            compare = Integer.compare((Integer) this.key, (Integer) o);
+            return compare;
+        }
+        else if (o instanceof Double && this.key instanceof Double) {
+            compare = Double.compare((Double) this.key, (Double) o);
+            return compare;
+        }
+        return 0; // return any other value as per your requirement
+    }
+
     public type getKey() {
         return key;
     }
