@@ -15,6 +15,16 @@ class avl<type> implements Tree<type> {
 
     @Override
     public boolean search(type k) {
+        avlNode<type> ptr = root;
+        while(ptr != null) {
+            if (ptr.compareToKey(k) == 0) {
+                return true;
+            } else if (ptr.compareToKey(k) == 1) {
+                ptr = ptr.right;
+            } else {
+                ptr = ptr.left;
+            }
+        }
         return false;
     }
 
