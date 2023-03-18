@@ -1,9 +1,9 @@
-public class avlNode<type> implements Comparable<avlNode<type>>{
-     type key;
-     avlNode<type> left;
-     avlNode<type> right;
-    int height;
-    avlNode(type k1){
+public class AvlNode<type> implements Comparable<AvlNode<type>>{
+    private type key;
+    private AvlNode<type> left;
+    private AvlNode<type> right;
+
+    AvlNode(type k1){
         key = k1;
     }
 
@@ -20,7 +20,7 @@ public class avlNode<type> implements Comparable<avlNode<type>>{
 
     //when you want to compare two nodes call the function compareTo(node);
     @Override
-    public int compareTo(avlNode<type> o) {
+    public int compareTo(AvlNode<type> o) {
         int compare;
         if (o.key instanceof String && this.key instanceof String) {
             if (((String) this.key).compareTo((String) o.key) == 0) {
@@ -43,7 +43,6 @@ public class avlNode<type> implements Comparable<avlNode<type>>{
     }
 
 
-    //when you want to compare node to the key call the function compareTo(key);
     public int compareToKey(type o) {
         int compare;
         if (o instanceof String && this.key instanceof String) {
@@ -74,19 +73,19 @@ public class avlNode<type> implements Comparable<avlNode<type>>{
         this.key = key;
     }
 
-    public avlNode<type> getLeft() {
+    public AvlNode<type> getLeft() {
         return left;
     }
 
-    public void setLeft(avlNode<type> left) {
+    public void setLeft(AvlNode<type> left) {
         this.left = left;
     }
 
-    public avlNode<type> getRight() {
+    public AvlNode<type> getRight() {
         return right;
     }
 
-    public void setRight(avlNode<type> right) {
+    public void setRight(AvlNode<type> right) {
         this.right = right;
     }
 }
