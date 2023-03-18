@@ -1,6 +1,6 @@
 
 class avl<type> implements Tree<type> {
-    private avlNode<type> root;
+    public avlNode<type> root;
     private int size = 0;
     //private int height;
 
