@@ -1,6 +1,5 @@
-
 class avl<type> implements Tree<type> {
-     avlNode<type> root;
+    avlNode<type> root;
     private int size = 0;
     //private int height;
 
@@ -22,10 +21,10 @@ class avl<type> implements Tree<type> {
             if (ptr.compareToKey(k) == 0) {
                 return true;
             } else if (ptr.compareToKey(k) == -1) {
-                System.out.println(ptr.key);
+//                System.out.println(ptr.key);
                 ptr = ptr.right;
             } else {
-                System.out.println(ptr.key);
+//                System.out.println(ptr.key);
                 ptr = ptr.left;
             }
         }
@@ -95,7 +94,7 @@ class avl<type> implements Tree<type> {
         this.root=insertEllement(root,key);
         return oSize != this.size;
     }
-    private avlNode<type> insertEllement(avlNode<type> root, type key) {
+    public avlNode<type> insertEllement(avlNode<type> root, type key) {
         if(root==null){ //reach leaf
             root = new avlNode<type>(key);
             size++;
@@ -136,7 +135,7 @@ class avl<type> implements Tree<type> {
         return n;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private avlNode<type> delete(avlNode<type> root, type key){
+    public avlNode<type> delete(avlNode<type> root, type key){
         if (root==null){
             //tree has no nodes or element wasn't found
             return root;
@@ -224,6 +223,14 @@ class avl<type> implements Tree<type> {
         return this.size;
     }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void preorder(avlNode n) {
+        if (n != null) {
+            System.out.print(n.key + " ");
+            preorder(n.left);
+            preorder(n.right);
+        }
+    }
 
 
 }
