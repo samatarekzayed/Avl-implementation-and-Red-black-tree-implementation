@@ -8,26 +8,12 @@ public class redblack_dictionary implements IDictionary{
 
 
     @Override
-    public boolean insert(String word) {
-        if(!search(word)) {
-            dictionary.insert(word);
-            return true;
-        }
-        else
-            return false;
-    }
+    public boolean insert(String word) { return dictionary.insert(word);}
     @Override
-    public boolean delete(String k) {
-        if(search(k)){
-            dictionary.delete(k);
-        }
-        return false;
-    }
+    public boolean delete(String k) {return  dictionary.delete(k);}
 
     @Override
-    public boolean search(String k) {
-        return dictionary.search(k);
-    }
+    public boolean search(String k) {return dictionary.search(k);}
 
     @Override
     public int[] batchInsert(String path) {
