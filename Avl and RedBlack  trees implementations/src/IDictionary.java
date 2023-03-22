@@ -16,11 +16,11 @@ public interface IDictionary {
 
 // Batch insert: Takes a path to a text file containing multiple words each in a separate line.
 // And tries to insert all that words in the dictionary.
-    public boolean batchInsert(String path);
+    public int[] batchInsert(String path);
 
 // Batch delete: Takes a path to a text file containing multiple words each in a separate
 // line. And tries to delete all that words from the dictionary.
-    public boolean batchDelete(String path);
+    public int[] batchDelete(String path);
 
 
 // Size: Returns the number of string keys in the dictionary.
