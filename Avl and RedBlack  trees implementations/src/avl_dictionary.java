@@ -4,7 +4,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class avl_dictionary implements IDictionary{
 
 
-		avl<String> dictionary = new avl();
+		avl<String> dictionary = new avl<>();
 
 
 
@@ -36,12 +36,12 @@ public class avl_dictionary implements IDictionary{
 	 */
 	@Override
 	public boolean delete(String k) {
-		if(dictionary.search(k)){
-			dictionary.delete(k);
-			return true;
-		}
-		else
-			return false;
+		//if(dictionary.search(k)){
+			return dictionary.delete(k);
+			//return true;
+		//}
+		//else
+		//	return false;
 	}
 
 
@@ -117,7 +117,7 @@ public class avl_dictionary implements IDictionary{
 	}
 
 	/**
-	 * @return size of the dictionary tree
+	 * @return # of words
 	 */
 	@Override
 	public int size() {
@@ -130,6 +130,9 @@ public class avl_dictionary implements IDictionary{
 	@Override
 	public int treeHeight() {
 		return dictionary.height();
+	}
+	public void Orderlist(){
+		dictionary.inorder(dictionary.root);
 	}
 
 

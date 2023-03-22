@@ -231,6 +231,13 @@ class avl<type> implements Tree<type> {
             preorder(n.right);
         }
     }
+    void inorder(avlNode n){
+        if(n != null){
+            inorder(n.left);
+            System.out.print(n.key+" ");
+            inorder(n.right);
+        }
+    }
 
 
 }

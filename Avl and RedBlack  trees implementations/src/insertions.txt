@@ -1,1 +1,13 @@
-//batch insertion in dictionary
+green
+dog
+car
+book
+egg
+fire
+east
+hall
+island
+apple
+clown
+zebra
+chat
