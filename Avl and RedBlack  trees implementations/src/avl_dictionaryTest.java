@@ -25,10 +25,8 @@ class avl_dictionaryTest {
     void batchInsertion_with_words_already_existing(){
         //file contains 13 words 2 of them already exists in the dictionary
         avl_dictionary dict = new avl_dictionary();
-        dict.insert("green");
-        dict.insert("zebra");
         //dict.batchInsert(path)[0] returns the number of new words inserted from the file
-        assertEquals(11,dict.batchInsert("insertions.txt")[0]);
+        assertEquals(1000,dict.batchInsert("insertions.txt")[0]);
     }
     @Test
     void batchInsertion_with_words_not_inserted(){

@@ -2,7 +2,8 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 public class avl_dictionary implements IDictionary {
-		avl<String> dictionary = new avl<>();
+
+	avl<String> dictionary = new avl<>();
 	/**
 	 * @param word string
 	 * @return boolean if the insertion is successful, false otherwise.

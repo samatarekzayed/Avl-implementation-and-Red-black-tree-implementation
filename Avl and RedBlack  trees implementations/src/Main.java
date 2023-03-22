@@ -110,17 +110,41 @@ class Main{
 
                     }
                 }
-                case "4" ->{
+                case "4" -> {
                     System.out.print("Enter a full path to txt file : ");
                     String path = sc.next();
-                    int[] counters = dictionary1.batchInsert(path);
-                    System.out.print(counters[0]+" words inserted "+counters[1]+" words already existed\n");
+                    if (option.equals("1")) {
+                        long start = System.currentTimeMillis();
+                        int[] counters = dictionary1.batchInsert(path);
+                        long end = System.currentTimeMillis();
+                        System.out.println(counters[0] + " words inserted " + counters[1] + " words already existed ");
+                        System.out.println("Time taken to insert to avl-based dictionary " + (counters[0] + counters[1]) + " words = " + (end - start) + " ms");
+                    } else {
+                        long start = System.currentTimeMillis();
+                        int[] counters = dictionary2.batchInsert(path);
+                        long end = System.currentTimeMillis();
+                        System.out.println(counters[0] + " words inserted " + counters[1] + " words already existed ");
+                        System.out.println("Time taken to insert to red-black based dictionary = " + (end - start) + " ms");
+                    }
                 }
-                case "5" ->{
+                case "5" -> {
                     System.out.print("Enter a full path to txt file : ");
                     String path = sc.next();
-                    int[] counters = dictionary1.batchDelete(path);
-                    System.out.print(counters[0]+" words deleted "+counters[1]+" words not found in dictionary\n");
+                    if (option.equals("1")) {
+                        long start = System.currentTimeMillis();
+                        int[] counters = dictionary1.batchDelete(path);
+                        long end = System.currentTimeMillis();
+                        System.out.print(counters[0] + " words deleted " + counters[1] + " words not found in dictionary\n");
+                        System.out.println("Time taken to delete from avl-based dictionary "+(end-start)+" ms");
+
+                    } else {
+                        long start = System.currentTimeMillis();
+                        int[] counters = dictionary2.batchDelete(path);
+                        long end = System.currentTimeMillis();
+                        System.out.print(counters[0] + " words deleted " + counters[1] + " words not found in dictionary\n");
+                        System.out.println("Time taken to delete from red-black based dictionary"+(end-start)+" ms");
+
+                    }
                 }
                 case "6" ->{
                     dictionary1.Orderlist();
