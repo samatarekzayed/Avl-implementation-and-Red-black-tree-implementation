@@ -4,7 +4,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class avl_dictionary implements IDictionary{
 
 
-		avl<String> dictionary = new avl<>();
+		avl<String> dictionary = new avl();
 
 
 
@@ -14,25 +14,12 @@ public class avl_dictionary implements IDictionary{
 	 */
 	@Override
 	public boolean insert(String word) {
-		if(!search(word)) {
+		if(!dictionary.search(word)) {
 			dictionary.insert(word);
 			return true;
 		}
 		else
 			return false;
-	}
-
-	/**
-	 * @param k a word to be deleted
-	 * @return true if the word is found and deleted, false otherwise
-	 */
-	@Override
-	public boolean delete(String k) {
-		if(search(k)){
-			dictionary.delete(k);
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -43,6 +30,21 @@ public class avl_dictionary implements IDictionary{
 	public boolean search(String k) {
 		return dictionary.search(k);
 	}
+	/**
+	 * @param k a word to be deleted
+	 * @return true if the word is found and deleted, false otherwise
+	 */
+	@Override
+	public boolean delete(String k) {
+		if(dictionary.search(k)){
+			dictionary.delete(k);
+			return true;
+		}
+		else
+			return false;
+	}
+
+
 
 	/**
 	 * @param path file's full path to read from
