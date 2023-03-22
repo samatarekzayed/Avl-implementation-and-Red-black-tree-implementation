@@ -10,11 +10,17 @@ public class RBNode<type> implements Comparable<RBNode<type>>{
     public boolean isRightChild;
 
 
+    RBNode()
+    {
+        this.isRed=false;
+    }
+
 
     RBNode(type key){
         this.key = key;
         this.isRed = true;
     }
+
 
     @Override
     public int compareTo(RBNode<type> o) {

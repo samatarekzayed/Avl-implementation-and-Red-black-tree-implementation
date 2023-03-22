@@ -1,6 +1,7 @@
 public class RedBlack<type> implements Tree<type>{
 
     public RBNode<type> root;
+    public RBNode<type> nil=new RBNode<>();
     public int size;
 
     public RedBlack() {
@@ -97,6 +98,108 @@ public class RedBlack<type> implements Tree<type>{
 
         return false;
     }
+
+
+    private RBNode<type> handleDoubleBlack(RBNode <type> root){
+        if(!getsiblings(root).isRed)
+        {
+            if( getsiblings(root).right.isRed==false && getsiblings(root).left.isRed==false )//case 1
+            {
+                getsiblings(root).isRed=true;
+
+            }
+            else if(getsiblings(root).right.isRed==true || getsiblings(root).left.isRed==true)//case 2
+            {
+
+
+            }
+
+
+
+        }
+        else if(getsiblings(root).isRed==true  )//case 3
+        {
+
+
+        }
+        return root ;
+    }
+
+    private RBNode<type> inorderSucessor(RBNode<type> n){
+        while (n.left!=nil){
+            n=n.left;
+        }
+        return n;
+    }
+
+
+    RBNode <type> getsiblings(RBNode <type> root){
+        if(root.parent.right!=root)
+            return root.parent.right;
+        else
+            return root.parent.left;
+    }
+
+    public RBNode <type>  deleteElement(RBNode <type>root ,type key) {
+        if(root!=null)
+            return root;
+        if (root.compareToKey(key)==1){
+            root.left=deleteElement(root.left,key);
+        }
+        //key> root.key
+        else if (root.compareToKey(key)==-1)
+        {
+            root.right=deleteElement(root.right,key);
+        }
+        else
+        {
+            if(root.left==nil && root.right==nil)//leaf
+            {
+                if(root.isRed==true)//red httmsa7 w wla ay
+                {
+                    return nil;
+                }
+                else //law soda yb2a el parent hn7oto double black law hwa black w law hwa red n7oto b black 3la tol
+                {
+                    if(root.parent.isRed)
+                    {
+                        root.parent.isRed=false;
+                        return nil;
+                    }
+                    else if(!root.parent.isRed)
+                    {
+                        handleDoubleBlack(root);
+                    }
+
+                }
+            }
+            else if(root.left==nil ^ root.right==nil)//has only 1 red child
+            {
+                if(root.left==nil)
+                {
+                    root.right.isRed=false;
+                    return root.right;
+                }
+                else
+                {
+                    root.left.isRed= false;
+                    return root.left;
+                }
+            }
+            else //internal node
+            {
+                //the node is internal
+                RBNode<type> temp = inorderSucessor(root.right);
+                // swap the value of this internal node with value if its inorder successor
+                type t= temp.key;
+                temp.key= root.key;
+                root.key=t;
+                root.right=deleteElement(root.right,key);
+            }
+        }
+        return root;
+    }
+
 
     @Override
     public boolean delete(type k) {
