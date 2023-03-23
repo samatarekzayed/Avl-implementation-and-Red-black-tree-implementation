@@ -1,0 +1,47 @@
+private RBNode<type> leftRotate(RBNode<type> n) {
+//        System.out.println("ana b3ml left rotateeee" + n.key);
+//        System.out.println(n.key);
+        RBNode<type> temp = n.parent;
+//        System.out.println(temp.key);
+        RBNode<type> node2 = n.right;
+        //RBNode<type> al15 = node2.left;
+
+        n.right = node2.left;
+
+
+
+        if(node2.left != null) {
+            node2.left.isRightChild = true;
+            node2.left.parent = n;
+        }
+
+        node2.left = n;
+        n.parent = node2;
+        n.isRightChild = false;
+
+//        if(al15 != null) {
+//            System.out.println(al15.key);
+//            if (al15.right != null)
+//                System.out.println(al15.right.key);
+//        }
+
+        if(temp != null){
+            if(temp.left == n){
+//                System.out.println("if");
+                temp.left = node2;
+                node2.parent = temp;
+                node2.isRightChild = false;
+            }
+            else{
+//                System.out.println("else");
+                temp.right = node2;
+                node2.parent = temp;
+                node2.isRightChild = true;
+            }
+        }
+        else{
+            node2.parent = null;
+        }
+
+        return node2;
+    }

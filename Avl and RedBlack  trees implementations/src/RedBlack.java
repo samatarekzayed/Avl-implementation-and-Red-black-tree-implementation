@@ -19,8 +19,9 @@ public class RedBlack<type> implements Tree<type>{
             n.left.isRightChild = false;
         }
         node1.right = n;
-        n.isRightChild = true;
         n.parent = node1;
+        n.isRightChild = true;
+
 
         if(temp != null){
             if(temp.left == n){

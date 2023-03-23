@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import java.math.*;
 class avlTest {
 
     @Test
@@ -24,11 +24,13 @@ class avlTest {
         assertEquals(10,tree.root.right.key);
         assertEquals(8,tree.root.left.right.key);
         assertEquals(6,tree.root.left.left.key);
+//        assertTrue(tree.height() <= 1.44*Math.log(2,tree.size()));
 
         //tree height = 3
         assertEquals(6,tree.root.left.left.key);
         //assertEquals(3,tree.height());
     }
+
     //          10                    9              9                                 9
     //         /   Right_Rotate      / \            / \                               /  \
     //        9   =====>           8   10 ====>   8     10  =========>               7    10
