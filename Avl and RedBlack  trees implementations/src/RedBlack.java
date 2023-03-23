@@ -34,35 +34,56 @@ public class RedBlack<type> implements Tree<type>{
                 node1.parent = temp;
             }
         }
+        else {
+            node1.parent = null;
+        }
 
         return node1;
     }
 
     private RBNode<type> leftRotate(RBNode<type> n) {
-        System.out.println("ana b3ml left rotateeee" + n.key);
+//        System.out.println("ana b3ml left rotateeee" + n.key);
+//        System.out.println(n.key);
         RBNode<type> temp = n.parent;
+//        System.out.println(temp.key);
         RBNode<type> node2 = n.right;
+        RBNode<type> al15 = node2.left;
+
         n.right = node2.left;
+
+
 
         if(node2.left != null) {
             node2.left.isRightChild = true;
             node2.left.parent = n;
         }
+
         node2.left = n;
         n.parent = node2;
         n.isRightChild = false;
 
+//        if(al15 != null) {
+//            System.out.println(al15.key);
+//            if (al15.right != null)
+//                System.out.println(al15.right.key);
+//        }
+
         if(temp != null){
             if(temp.left == n){
+//                System.out.println("if");
                 temp.left = node2;
                 node2.parent = temp;
                 node2.isRightChild = false;
             }
             else{
+//                System.out.println("else");
                 temp.right = node2;
                 node2.parent = temp;
                 node2.isRightChild = true;
             }
+        }
+        else{
+            node2.parent = null;
         }
 
         return node2;
@@ -86,8 +107,9 @@ public class RedBlack<type> implements Tree<type>{
                 //3mo eswed hn3ml rotate
                 if(newNode.isRightChild && parent.isRightChild){
                     //hn3ml left rotate
-
+//                    System.out.println(newNode.key + " b3ml left rotate " + parent.key);
                     parent = leftRotate(gedo);
+//                    System.out.println(parent.key);
                     parent.isRed = false;
                     parent.left.isRed = true;
                     parent.right.isRed = true;
@@ -129,12 +151,17 @@ public class RedBlack<type> implements Tree<type>{
                 amo.isRed = false;
                 parent.isRed = false;
                 //al mafrod n3ml check l7d al root b2a
+//                System.out.println("//////////////////////////////////////////////////////////////////////");
+//                services<type> services = new services<>();
+//                services.print2DUtil(this.root,0);
+//                System.out.println("//////////////////////////////////////////////////////////////////////");
                 newNode = gedo;
                 parent = newNode.parent;
 
                 if(newNode!=null && parent!=null){
                     if(newNode.isRed && parent.isRed){
                         //handle again
+//                        System.out.println("handle again " + newNode.key + " " + newNode.parent.key);
                         handleInsert(newNode,root);
                     }
                 }
@@ -185,6 +212,10 @@ public class RedBlack<type> implements Tree<type>{
                 newNode.parent = parent;
             }
             this.size++;
+//            System.out.println("//////////////////////////////////////////////////////////////////////");
+//            services<type> services = new services<>();
+//            services.print2DUtil(this.root,0);
+
 
             //start handle
             if(parent.isRed)
