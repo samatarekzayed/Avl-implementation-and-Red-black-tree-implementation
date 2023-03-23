@@ -12,7 +12,7 @@ public class RedBlack<type> implements Tree<type>{
     private RBNode<type> rightRotate(RBNode<type> n) {
         RBNode<type> temp = n.parent;
         RBNode<type> node1 = n.left;
-        n.left = node1.right;
+        n.left= node1.right;
 
         if(node1.right != null) {
             node1.right.parent = n;
@@ -47,7 +47,7 @@ public class RedBlack<type> implements Tree<type>{
         RBNode<type> temp = n.parent;
 //        System.out.println(temp.key);
         RBNode<type> node2 = n.right;
-        RBNode<type> al15 = node2.left;
+        //RBNode<type> al15 = node2.left;
 
         n.right = node2.left;
 

@@ -118,5 +118,5 @@ public class avl_dictionary implements IDictionary {
 	 */
 	@Override
 	public int treeHeight() {return dictionary.height();}
-	public void Orderlist(){dictionary.inorder(dictionary.root);}
+//	public void Orderlist(){dictionary.inorder(dictionary.root);}
 }

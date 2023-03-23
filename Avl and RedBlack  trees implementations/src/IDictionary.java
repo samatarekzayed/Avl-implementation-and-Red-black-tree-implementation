@@ -1,4 +1,4 @@
-public interface IDictionary {
+public interface IDictionary{
 
 // Initialize (constructor): Takes the name of the type of the backend tree as an input and
 // create a new empty dictionary based on it.
@@ -29,5 +29,5 @@ public interface IDictionary {
 // Tree Height: Returns the height of the dictionary backend tree.
     public int treeHeight();
 
-
+// OrderList: Prints out the content of the Dictionary in order (in-order traversal)
 }
