@@ -25,6 +25,5 @@ public interface Tree<key> {
 
 // Height: Returns the height of the tree which is the longest path from the root to a leaf
 // node. Can run up to O(n).
-
     public int height();
 }

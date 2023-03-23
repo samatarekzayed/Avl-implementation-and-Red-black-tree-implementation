@@ -1,1 +1,9 @@
-//batch deletions in dictionary
+apple
+book
+car
+dog
+egg
+fire
+green
+hall
+island

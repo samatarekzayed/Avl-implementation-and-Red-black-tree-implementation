@@ -83,10 +83,10 @@ public class services <type>{
         for (int i = COUNT; i < space; i++)
             System.out.print(" ");
         if(root.isRed){
-            System.out.print("\u001B[31m" + root.getKey() + "\n" + "\u001B[0m");
+            System.out.print("\u001B[31m" + root.getKey()+ "\n" + "\u001B[0m");
         }
         else {
-            System.out.print(root.getKey() + "\n");
+            System.out.print(root.getKey()  + "\n");
         }
 
 

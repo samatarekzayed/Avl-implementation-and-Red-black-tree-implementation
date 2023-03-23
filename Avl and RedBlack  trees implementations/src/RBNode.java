@@ -6,13 +6,14 @@ public class RBNode<type> implements Comparable<RBNode<type>>{
     public RBNode<type> right;
     public int height;
     public boolean isRed;
-
+    public boolean isDB;
     public boolean isRightChild;
 
 
     RBNode()
     {
         this.isRed=false;
+
     }
 
 

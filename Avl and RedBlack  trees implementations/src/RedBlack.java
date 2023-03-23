@@ -3,28 +3,24 @@ public class RedBlack<type> implements Tree<type>{
     public RBNode<type> root;
     public RBNode<type> nil=new RBNode<>();
     public int size;
-
+    private int whichCase=0;
     public RedBlack() {
         this.root = null;
         this.size = 0;
     }
 
     private RBNode<type> rightRotate(RBNode<type> n) {
-//        System.out.println("right rotate " + n.key + "is right child ? " + n.isRightChild);
-//        services<type> services = new services<>();
-//        services.print2DUtil(this.root,0);
         RBNode<type> temp = n.parent;
         RBNode<type> node1 = n.left;
         n.left= node1.right;
 
-        if(node1.right != this.nil) {
+        if(node1.right != null) {
             node1.right.parent = n;
             n.left.isRightChild = false;
         }
         node1.right = n;
-        n.parent = node1;
         n.isRightChild = true;
-
+        n.parent = node1;
 
         if(temp != null){
             if(temp.left == n){
@@ -41,8 +37,6 @@ public class RedBlack<type> implements Tree<type>{
         else {
             node1.parent = null;
         }
-//        System.out.println(node1.isRightChild + " " + node1.key);
-//        System.out.println("/////////////////////////////////////////////////////////////");
 
         return node1;
     }
@@ -59,7 +53,7 @@ public class RedBlack<type> implements Tree<type>{
 
 
 
-        if(node2.left != this.nil) {
+        if(node2.left != null) {
             node2.left.isRightChild = true;
             node2.left.parent = n;
         }
@@ -109,7 +103,7 @@ public class RedBlack<type> implements Tree<type>{
 
 
 
-            if(amo==this.nil || !amo.isRed()){
+            if(amo==null || !amo.isRed()){
                 //3mo eswed hn3ml rotate
                 if(newNode.isRightChild && parent.isRightChild){
                     //hn3ml left rotate
@@ -142,7 +136,7 @@ public class RedBlack<type> implements Tree<type>{
                     parent = rightRotate(parent);
                     gedo = parent.parent;
 
-                    parent = leftRotate(gedo);
+                    parent = rightRotate(gedo);
                     parent.isRed = false;
                     parent.left.isRed = true;
                     parent.right.isRed = true;
@@ -186,8 +180,6 @@ public class RedBlack<type> implements Tree<type>{
     @Override
     public boolean insert(type k) {
         RBNode<type> newNode = new RBNode<type>(k);
-        newNode.left = this.nil;
-        newNode.right = this.nil;
         if(this.size==0){
             newNode.isRed = false;
             newNode.isRightChild = false;
@@ -199,7 +191,7 @@ public class RedBlack<type> implements Tree<type>{
         else {
             RBNode<type> ptr1 = this.root;
             RBNode<type> parent = ptr1;
-            while (ptr1 != this.nil) {
+            while (ptr1 != null) {
                 parent = ptr1;
                 if (newNode.compareTo(ptr1) == 1) {
                     ptr1 = ptr1.right;
@@ -235,30 +227,7 @@ public class RedBlack<type> implements Tree<type>{
     }
 
 
-    private RBNode<type> handleDoubleBlack(RBNode <type> root){
-        if(!getsiblings(root).isRed)
-        {
-            if( getsiblings(root).right.isRed==false && getsiblings(root).left.isRed==false )//case 1
-            {
-                getsiblings(root).isRed=true;
 
-            }
-            else if(getsiblings(root).right.isRed==true || getsiblings(root).left.isRed==true)//case 2
-            {
-
-
-            }
-
-
-
-        }
-        else if(getsiblings(root).isRed==true  )//case 3
-        {
-
-
-        }
-        return root ;
-    }
 
     private RBNode<type> inorderSucessor(RBNode<type> n){
         while (n.left!=nil){
@@ -276,60 +245,201 @@ public class RedBlack<type> implements Tree<type>{
     }
 
     public RBNode <type>  deleteElement(RBNode <type>root ,type key) {
-        if(root!=null)
+        if (root == null)
             return root;
-        if (root.compareToKey(key)==1){
-            root.left=deleteElement(root.left,key);
-        }
-        //key> root.key
-        else if (root.compareToKey(key)==-1)
-        {
-            root.right=deleteElement(root.right,key);
-        }
-        else
-        {
-            if(root.left==nil && root.right==nil)//leaf
-            {
-                if(root.isRed==true)//red httmsa7 w wla ay
-                {
-                    return nil;
-                }
-                else //law soda yb2a el parent hn7oto double black law hwa black w law hwa red n7oto b black 3la tol
-                {
-                    if(root.parent.isRed)
-                    {
-                        root.parent.isRed=false;
-                        return nil;
+        if (root.compareToKey(key) == 1) {
+            root.left = deleteElement(root.left, key); //search
+            //case 2
+            if(whichCase==2) {
+                if (root.isDB && root.parent == null) {
+                    root.isDB = false;
+                } else if (root.isDB) {
+                    RBNode<type> s = getsiblings(root);
+                    if (root.isDB && !s.isRed && !s.right.isRed && !s.left.isRed) {
+                        s.isRed = true;
+                        if (root.parent.isRed)
+                            root.parent.isRed = false;
+                        else
+                            root.parent.isDB = true;
                     }
-                    else if(!root.parent.isRed)
-                    {
-                        handleDoubleBlack(root);
-                    }
-
                 }
             }
-            else if(root.left==nil ^ root.right==nil)//has only 1 red child
+            else if(whichCase==3) {
+                //case 3
+                System.out.println("case3");
+
+                if (root.right.isRed) {
+                    root.right.isRed = false;
+                    root = leftRotate(root);
+                    root.left.right.isRed = true;
+                }
+            }
+            //case 4
+            else if(whichCase==4){
+                if(root.right.left.isRed){
+                    root.right.left.isRed=false;
+                    root.right.isRed=true;
+                    root.right=rightRotate(root.right);
+                }
+                if (root.right.right.isRed){
+                    root.right.right.isRed=false;
+                    boolean rColor=root.isRed;
+                    root.isRed=root.right.isRed;
+                    root.right.isRed=rColor;
+                    root=leftRotate(root);
+                }
+            }
+            whichCase=0;
+        }
+        //key> root.key
+        else if (root.compareToKey(key) == -1) {
+            root.right = deleteElement(root.right, key); //search
+            //System.out.println(root.key+" "+root.parent.key);
+            //case 2
+            if(whichCase==2) {
+                if (root.isDB && root.parent == null) {
+                    root.isDB = false;
+                } else if (root.isDB) {
+                    RBNode<type> s = getsiblings(root);
+                    if (root.isDB && !s.isRed && !s.right.isRed && !s.left.isRed) {
+                        s.isRed = true;
+                        if (root.parent.isRed)
+                            root.parent.isRed = false;
+                        else
+                            root.parent.isDB = true;
+                    }
+                }
+            }
+            //case 3
+            else if(whichCase==3){
+                System.out.println("case3");
+
+                if (root.left.isRed) {
+                    root.left.isRed=false;
+                    //root.left.right.isRed=true;
+                    root = rightRotate(root);
+                    root.right.left.isRed=true;
+                }
+            }
+            //case 4
+            else if(whichCase==4){
+                if(root.left.right!=null && root.left.right.isRed){
+                    root.left.right.isRed=false;
+                    root.left.isRed=true;
+                    root.left=leftRotate(root.left);
+                    System.out.println(root.left.left.key+" "+root.left.left.isRed);
+                }
+                if (root.left.left!=null && root.left.left.isRed){
+                    root.left.left.isRed=false;
+                    boolean rColor=root.isRed;
+                    root.isRed=root.left.isRed;
+                    root.left.isRed=rColor;
+                    root=rightRotate(root);
+                }
+            }
+            whichCase=0;
+        }
+        else {
+            if (size == 1) {
+                size--;
+                return null;
+            } else if (root.left == nil && root.right == nil)//leaf
             {
-                if(root.left==nil)
+                if (root.isRed)//red httmsa7 w wla ay
                 {
-                    root.right.isRed=false;
-                    return root.right;
-                }
-                else
+                    size--;
+                    return nil;
+                } else //law soda yb2a el parent hn7oto double black law hwa black w law hwa red n7oto b black 3la tol
                 {
-                    root.left.isRed= false;
-                    return root.left;
+                    //case 2
+                    RBNode<type> s = getsiblings(root);
+                    if (!s.isRed && !s.right.isRed && !s.left.isRed) {
+                        s.isRed = true;
+                        if (root.parent.isRed) {
+                            root.parent.isRed = false;
+                        } else {
+                            root.parent.isDB = true;
+                        }
+                        whichCase=2;
+                        size--;
+                        return nil;
+                    }
+                    //finish case 3
+                    else if (s.isRed) {
+                        size--;
+                        whichCase=3;
+                        return nil;
+                    }
+                    //case4
+                    else {
+                        size--;
+                        whichCase=4;
+                        return nil;
+                    }
                 }
+            }
+            else if (root.left == nil ^ root.right == nil)//has only 1 red child
+            {
+                if (root.left == nil) {
+                    root.key=root.right.key;
+                    root.right=nil;
+                } else {
+                    root.key=root.left.key;
+                    root.left=nil;
+                }
+                size--;
             }
             else //internal node
             {
                 //the node is internal
                 RBNode<type> temp = inorderSucessor(root.right);
                 // swap the value of this internal node with value if its inorder successor
-                type t= temp.key;
-                temp.key= root.key;
-                root.key=t;
-                root.right=deleteElement(root.right,key);
+                type t = temp.key;
+                temp.key = root.key;
+                root.key = t;
+                root.right = deleteElement(root.right, key);
+                if(whichCase==2){
+                    System.out.println("heeeeeeeeeeeee");
+                    if (root.isDB && root.parent == null) {
+                        root.isDB = false;
+                    } else if (root.isDB) {
+                        RBNode<type> s = getsiblings(root);
+                        if (root.isDB && !s.isRed && !s.right.isRed && !s.left.isRed) {
+                            s.isRed = true;
+                            if (root.parent.isRed)
+                                root.parent.isRed = false;
+                            else
+                                root.parent.isDB = true;
+                        }
+                    }
+                }
+                //case 3
+                if(whichCase==3) {
+                    if (root.left.isRed) {
+                        root.left.isRed = false;
+                        root.left.right.isRed = true;
+                        root = rightRotate(root);
+                    }
+                }
+                //case 4
+                if(whichCase==4) {
+                    if (root.left.right.isRed) {
+                        root.left.right.isRed = false;
+                        root.left.isRed = true;
+                        root.left = leftRotate(root.left);
+                    }
+                    if (root.left.left.isRed) {
+                        root = rightRotate(root);
+                        if (!root.isRed)
+                            root.left.left.isRed = false;
+                        else if (root.isRed & root.left.right.isRed) {
+                            root.left.isRed = true;
+                            root.isRed = false;
+                            root.left.left.isRed = false;
+                        }
+                    }
+                }
+                whichCase=0;
             }
         }
         return root;
@@ -337,8 +447,10 @@ public class RedBlack<type> implements Tree<type>{
 
 
     @Override
-    public boolean delete(type k) {
-        return false;
+    public boolean delete(type key) {
+        int size=this.size;
+        this.root=deleteElement(this.root,key);
+        return size!=this.size;
     }
 
     @Override
@@ -348,21 +460,17 @@ public class RedBlack<type> implements Tree<type>{
             if (ptr.compareToKey(k) == 0) {
                 return true;
             } else if (ptr.compareToKey(k) == -1) {
-//                System.out.println(ptr.key);
                 ptr = ptr.right;
             } else {
-//                System.out.println(ptr.key);
                 ptr = ptr.left;
             }
         }
         return false;
     }
-
     @Override
     public int size() {
         return this.size;
     }
-
     @Override
     public int height() {
         if(this.root!=null)
