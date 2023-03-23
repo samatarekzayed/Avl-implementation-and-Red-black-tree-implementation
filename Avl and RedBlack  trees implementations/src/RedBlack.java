@@ -39,13 +39,13 @@ public class RedBlack<type> implements Tree<type>{
     }
 
     private RBNode<type> leftRotate(RBNode<type> n) {
-//        System.out.println(n.key);
+        System.out.println("ana b3ml left rotateeee" + n.key);
         RBNode<type> temp = n.parent;
         RBNode<type> node2 = n.right;
         n.right = node2.left;
 
         if(node2.left != null) {
-            n.right.isRightChild = true;
+            node2.left.isRightChild = true;
             node2.left.parent = n;
         }
         node2.left = n;

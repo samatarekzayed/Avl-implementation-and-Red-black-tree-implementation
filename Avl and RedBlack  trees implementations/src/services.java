@@ -6,6 +6,13 @@ public class services <type>{
             preorder(n.getRight());
         }
     }
+    void preorder(RBNode<type> n) {
+        if (n != null) {
+            System.out.print(n.getKey() + " ");
+            preorder(n.getLeft());
+            preorder(n.getRight());
+        }
+    }
     ///////////////////////////////////////////////////
     void postorder(avlNode<type> n)
     {
