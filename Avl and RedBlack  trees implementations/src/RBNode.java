@@ -1,6 +1,7 @@
 public class RBNode<type> implements Comparable<RBNode<type>>{
 
     public type key;
+
     public RBNode<type> parent;
     public RBNode<type> left;
     public RBNode<type> right;
@@ -12,6 +13,10 @@ public class RBNode<type> implements Comparable<RBNode<type>>{
 
     RBNode()
     {
+        this.right=null;
+        this.key = null;
+        this.left = null;
+        this.parent = null;
         this.isRed=false;
 
     }

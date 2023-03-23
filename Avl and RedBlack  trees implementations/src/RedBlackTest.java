@@ -69,6 +69,64 @@ class RedBlackTest {
         assertEquals(false,tree.insert("bag"));
     }
     @Test
+    void insert_case_parent_uncle_black(){
+        RedBlack tree = new RedBlack<>();
+        int[] values = {19,17,9,75,18,81};
+        for(int i=0;i<values.length;i++){
+            tree.insert(values[i]);
+        }
+        assertEquals(17,tree.root.key);
+        assertFalse(tree.root.isRed);
+        assertEquals(19,tree.root.right.key);
+        assertTrue(tree.root.right.isRed);
+        assertEquals(9,tree.root.left.key);
+        assertFalse(tree.root.left.isRed);
+        assertEquals(18,tree.root.right.left.key);
+        assertFalse(tree.root.right.left.isRed);
+        assertEquals(81,tree.root.right.right.key);
+        assertFalse(tree.root.right.right.isRed);
+    }
+    @Test
+    void insert_case_parent_red_uncle_black_isnerted_inner(){
+        RedBlack tree = new RedBlack<>();
+        int[] values = {19,17,9,75,24};
+        for(int i=0;i<values.length;i++){
+            tree.insert(values[i]);
+        }
+        assertEquals(17,tree.root.key);
+        assertFalse(tree.root.isRed);
+        assertEquals(24,tree.root.right.key);
+        assertFalse(tree.root.right.isRed);
+        assertEquals(9,tree.root.left.key);
+        assertFalse(tree.root.left.isRed);
+        assertEquals(19,tree.root.right.left.key);
+        assertTrue(tree.root.right.left.isRed);
+        assertEquals(75,tree.root.right.right.key);
+        assertTrue(tree.root.right.right.isRed);
+
+
+    }
+    @Test
+    void insert_case_parent_red_uncle_black_isnerted_outer() {
+        RedBlack tree = new RedBlack<>();
+        int[] values = {19, 17, 9, 75, 81};
+        for (int i = 0; i < values.length; i++) {
+            tree.insert(values[i]);
+        }
+        assertEquals(17, tree.root.key);
+        assertFalse(tree.root.isRed);
+        assertEquals(75, tree.root.right.key);
+        assertFalse(tree.root.right.isRed);
+        assertEquals(9, tree.root.left.key);
+        assertFalse(tree.root.left.isRed);
+        assertEquals(19, tree.root.right.left.key);
+        assertTrue(tree.root.right.left.isRed);
+        assertEquals(81, tree.root.right.right.key);
+        assertTrue(tree.root.right.right.isRed);
+
+    }
+
+        @Test
     void testing_search_of_an_existing_word(){
         RedBlack<String> tree = new RedBlack<>();
         tree.insert("dog");
