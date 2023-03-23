@@ -10,17 +10,21 @@ public class RedBlack<type> implements Tree<type>{
     }
 
     private RBNode<type> rightRotate(RBNode<type> n) {
+//        System.out.println("right rotate " + n.key + "is right child ? " + n.isRightChild);
+//        services<type> services = new services<>();
+//        services.print2DUtil(this.root,0);
         RBNode<type> temp = n.parent;
         RBNode<type> node1 = n.left;
         n.left= node1.right;
 
-        if(node1.right != null) {
+        if(node1.right != this.nil) {
             node1.right.parent = n;
             n.left.isRightChild = false;
         }
         node1.right = n;
-        n.isRightChild = true;
         n.parent = node1;
+        n.isRightChild = true;
+
 
         if(temp != null){
             if(temp.left == n){
@@ -37,6 +41,8 @@ public class RedBlack<type> implements Tree<type>{
         else {
             node1.parent = null;
         }
+//        System.out.println(node1.isRightChild + " " + node1.key);
+//        System.out.println("/////////////////////////////////////////////////////////////");
 
         return node1;
     }
@@ -53,7 +59,7 @@ public class RedBlack<type> implements Tree<type>{
 
 
 
-        if(node2.left != null) {
+        if(node2.left != this.nil) {
             node2.left.isRightChild = true;
             node2.left.parent = n;
         }
@@ -100,10 +106,7 @@ public class RedBlack<type> implements Tree<type>{
             else {
                 amo = gedo.right;
             }
-
-
-
-            if(amo==null || !amo.isRed()){
+            if(amo==this.nil || !amo.isRed()){
                 //3mo eswed hn3ml rotate
                 if(newNode.isRightChild && parent.isRightChild){
                     //hn3ml left rotate
@@ -113,7 +116,6 @@ public class RedBlack<type> implements Tree<type>{
                     parent.isRed = false;
                     parent.left.isRed = true;
                     parent.right.isRed = true;
-
                 }
                 else if (!newNode.isRightChild && !parent.isRightChild) {
                     //hn3ml right rotate
@@ -136,7 +138,7 @@ public class RedBlack<type> implements Tree<type>{
                     parent = rightRotate(parent);
                     gedo = parent.parent;
 
-                    parent = rightRotate(gedo);
+                    parent = leftRotate(gedo);
                     parent.isRed = false;
                     parent.left.isRed = true;
                     parent.right.isRed = true;
@@ -180,6 +182,8 @@ public class RedBlack<type> implements Tree<type>{
     @Override
     public boolean insert(type k) {
         RBNode<type> newNode = new RBNode<type>(k);
+        newNode.left = this.nil;
+        newNode.right = this.nil;
         if(this.size==0){
             newNode.isRed = false;
             newNode.isRightChild = false;
@@ -191,7 +195,7 @@ public class RedBlack<type> implements Tree<type>{
         else {
             RBNode<type> ptr1 = this.root;
             RBNode<type> parent = ptr1;
-            while (ptr1 != null) {
+            while (ptr1 != this.nil) {
                 parent = ptr1;
                 if (newNode.compareTo(ptr1) == 1) {
                     ptr1 = ptr1.right;
@@ -225,8 +229,6 @@ public class RedBlack<type> implements Tree<type>{
             return true;
         }
     }
-
-
 
 
     private RBNode<type> inorderSucessor(RBNode<type> n){
