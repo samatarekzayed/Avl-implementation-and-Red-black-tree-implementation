@@ -10,6 +10,9 @@ public class RedBlack<type> implements Tree<type>{
     }
 
     private RBNode<type> rightRotate(RBNode<type> n) {
+//        System.out.println("right rotate " + n.key + "is right child ? " + n.isRightChild);
+//        services<type> services = new services<>();
+//        services.print2DUtil(this.root,0);
         RBNode<type> temp = n.parent;
         RBNode<type> node1 = n.left;
         n.left= node1.right;
@@ -38,6 +41,8 @@ public class RedBlack<type> implements Tree<type>{
         else {
             node1.parent = null;
         }
+//        System.out.println(node1.isRightChild + " " + node1.key);
+//        System.out.println("/////////////////////////////////////////////////////////////");
 
         return node1;
     }
@@ -137,7 +142,7 @@ public class RedBlack<type> implements Tree<type>{
                     parent = rightRotate(parent);
                     gedo = parent.parent;
 
-                    parent = rightRotate(gedo);
+                    parent = leftRotate(gedo);
                     parent.isRed = false;
                     parent.left.isRed = true;
                     parent.right.isRed = true;
