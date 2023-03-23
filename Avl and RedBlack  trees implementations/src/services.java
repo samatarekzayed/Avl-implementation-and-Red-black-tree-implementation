@@ -56,4 +56,34 @@ public class services <type>{
         // Pass initial space count as 0
         print2DUtil(root, 0);
     }
+
+    public void print2DUtil(RBNode<type> root, int space)
+    {
+        // Base case
+        if (root == null)
+            return;
+
+        // Increase distance between levels
+        space += COUNT;
+
+        // Process right child first
+//        System.out.println(root.key);
+        print2DUtil(root.getRight(), space);
+
+        // Print current node after space
+        // count
+        System.out.print("\n");
+        for (int i = COUNT; i < space; i++)
+            System.out.print(" ");
+        if(root.isRed){
+            System.out.print("\u001B[31m" + root.getKey() + "\n" + "\u001B[0m");
+        }
+        else {
+            System.out.print(root.getKey() + "\n");
+        }
+
+
+        // Process left child
+        print2DUtil(root.getLeft(), space);
+    }
 }

@@ -9,6 +9,146 @@ public class RedBlack<type> implements Tree<type>{
         this.size = 0;
     }
 
+    private RBNode<type> rightRotate(RBNode<type> n) {
+        RBNode<type> temp = n.parent;
+        RBNode<type> node1 = n.left;
+        n.left = node1.right;
+
+        if(node1.right != null) {
+            node1.right.parent = n;
+            n.left.isRightChild = false;
+        }
+        node1.right = n;
+        n.isRightChild = true;
+        n.parent = node1;
+
+        if(temp != null){
+            if(temp.left == n){
+                temp.left = node1;
+                node1.isRightChild = false;
+                node1.parent = temp;
+            }
+            else{
+                temp.right = node1;
+                node1.isRightChild = true;
+                node1.parent = temp;
+            }
+        }
+
+        return node1;
+    }
+
+    private RBNode<type> leftRotate(RBNode<type> n) {
+//        System.out.println(n.key);
+        RBNode<type> temp = n.parent;
+        RBNode<type> node2 = n.right;
+        n.right = node2.left;
+
+        if(node2.left != null) {
+            n.right.isRightChild = true;
+            node2.left.parent = n;
+        }
+        node2.left = n;
+        n.parent = node2;
+        n.isRightChild = false;
+
+        if(temp != null){
+            if(temp.left == n){
+                temp.left = node2;
+                node2.parent = temp;
+                node2.isRightChild = false;
+            }
+            else{
+                temp.right = node2;
+                node2.parent = temp;
+                node2.isRightChild = true;
+            }
+        }
+
+        return node2;
+    }
+
+    private boolean handleInsert(RBNode<type> newNode,RBNode<type> root){
+        RBNode<type> parent = newNode.parent;
+        if(parent!=null && parent.parent!=null){
+            RBNode<type> gedo = parent.parent;
+            RBNode<type> amo;
+            if(parent.isRightChild){
+                amo = gedo.left;
+            }
+            else {
+                amo = gedo.right;
+            }
+
+
+
+            if(amo==null || !amo.isRed()){
+                //3mo eswed hn3ml rotate
+                if(newNode.isRightChild && parent.isRightChild){
+                    //hn3ml left rotate
+
+                    parent = leftRotate(gedo);
+                    parent.isRed = false;
+                    parent.left.isRed = true;
+                    parent.right.isRed = true;
+
+                }
+                else if (!newNode.isRightChild && !parent.isRightChild) {
+                    //hn3ml right rotate
+                    parent = rightRotate(gedo);
+                    parent.isRed = false;
+                    parent.left.isRed = true;
+                    parent.right.isRed = true;
+                }
+                else if(newNode.isRightChild && !parent.isRightChild){
+                    //left right rotate
+                    parent = leftRotate(parent);
+                    gedo = parent.parent;
+                    parent = rightRotate(gedo);
+                    parent.isRed = false;
+                    parent.left.isRed = true;
+                    parent.right.isRed = true;
+                }
+                else {
+                    //right left rotate
+                    parent = rightRotate(parent);
+                    gedo = parent.parent;
+
+                    parent = rightRotate(gedo);
+                    parent.isRed = false;
+                    parent.left.isRed = true;
+                    parent.right.isRed = true;
+                }
+                if(gedo==root)
+                    this.root = parent;
+                return true;
+            }
+            else{
+                //3mo a7mar hn3ml colour flip
+                gedo.isRed = true;
+                amo.isRed = false;
+                parent.isRed = false;
+                //al mafrod n3ml check l7d al root b2a
+                newNode = gedo;
+                parent = newNode.parent;
+
+                if(newNode!=null && parent!=null){
+                    if(newNode.isRed && parent.isRed){
+                        //handle again
+                        handleInsert(newNode,root);
+                    }
+                }
+
+                return true;
+            }
+
+        }
+        else{
+            //m3ndo4 parent aw gedo yeb2a m4 hn3ml 7aga
+            return true;
+        }
+    }
+
 
     @Override
     public boolean insert(type k) {
@@ -20,83 +160,38 @@ public class RedBlack<type> implements Tree<type>{
             this.size++;
             return true;
         }
-        else{
+        else {
             RBNode<type> ptr1 = this.root;
             RBNode<type> parent = ptr1;
-            while(ptr1 != null){
+            while (ptr1 != null) {
                 parent = ptr1;
-                if(newNode.compareTo(ptr1)==1){
+                if (newNode.compareTo(ptr1) == 1) {
                     ptr1 = ptr1.right;
                     newNode.isRightChild = true;
-                }
-                else if (newNode.compareTo(ptr1)==-1) {
+                } else if (newNode.compareTo(ptr1) == -1) {
                     ptr1 = ptr1.left;
                     newNode.isRightChild = false;
-                }
-                else{
+                } else {
                     return false;
                 }
             }
 
             //al child et7at w f mkano al monasb w lono a7mar
-            if(newNode.isRightChild){
+            if (newNode.isRightChild) {
                 parent.right = newNode;
                 newNode.parent = parent;
-            }
-            else {
+            } else {
                 parent.left = newNode;
                 newNode.parent = parent;
             }
             this.size++;
 
-            if(parent!=null && parent.parent!=null){
-                RBNode<type> gedo = parent.parent;
-                RBNode<type> amo;
-                if(parent.isRightChild){
-                    //yeb2a 3mha left
-                    amo = gedo.left;
-                }
-                else{
-                    //yeb2a 3mha right
-                    amo = gedo.right;
-                }
-
-                if(amo==null || !amo.isRed()){
-                    //3mo eswed hn3ml rotate
-                    if(newNode.isRightChild && parent.isRightChild){
-                        //hn3ml left rotate
-                    }
-                    else if (!newNode.isRightChild && !parent.isRightChild) {
-                        //hn3ml right rotate
-                    }
-                    else if(newNode.isRightChild && !parent.isRightChild){
-                        //left right rotate
-                    }
-                    else {
-                        //right left rotate
-                    }
-                }
-                else{
-                    //3mo a7mar hn3ml colour flip
-                    gedo.isRed = true;
-                    amo.isRed = false;
-                    parent.isRed = false;
-                    //al mafrod n3ml check l7d al root b2a
-                }
-
-
-
-
-            }
-            else{
-                //m3ndo4 parent aw gedo yeb2a m4 hn3ml 7aga
-                return true;
-            }
-
+            //start handle
+            if(parent.isRed)
+                handleInsert(newNode,this.root);
+            this.root.isRed = false;
+            return true;
         }
-
-
-        return false;
     }
 
 
