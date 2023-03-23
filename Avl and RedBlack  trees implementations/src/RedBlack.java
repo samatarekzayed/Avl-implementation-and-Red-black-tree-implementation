@@ -17,7 +17,7 @@ public class RedBlack<type> implements Tree<type>{
         RBNode<type> node1 = n.left;
         n.left= node1.right;
 
-        if(node1.right != null) {
+        if(node1.right != this.nil) {
             node1.right.parent = n;
             n.left.isRightChild = false;
         }
@@ -59,7 +59,7 @@ public class RedBlack<type> implements Tree<type>{
 
 
 
-        if(node2.left != null) {
+        if(node2.left != this.nil) {
             node2.left.isRightChild = true;
             node2.left.parent = n;
         }
@@ -109,7 +109,7 @@ public class RedBlack<type> implements Tree<type>{
 
 
 
-            if(amo==null || !amo.isRed()){
+            if(amo==this.nil || !amo.isRed()){
                 //3mo eswed hn3ml rotate
                 if(newNode.isRightChild && parent.isRightChild){
                     //hn3ml left rotate
@@ -186,6 +186,8 @@ public class RedBlack<type> implements Tree<type>{
     @Override
     public boolean insert(type k) {
         RBNode<type> newNode = new RBNode<type>(k);
+        newNode.left = this.nil;
+        newNode.right = this.nil;
         if(this.size==0){
             newNode.isRed = false;
             newNode.isRightChild = false;
@@ -196,7 +198,7 @@ public class RedBlack<type> implements Tree<type>{
         else {
             RBNode<type> ptr1 = this.root;
             RBNode<type> parent = ptr1;
-            while (ptr1 != null) {
+            while (ptr1 != this.nil) {
                 parent = ptr1;
                 if (newNode.compareTo(ptr1) == 1) {
                     ptr1 = ptr1.right;
