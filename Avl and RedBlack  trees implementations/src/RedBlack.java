@@ -195,6 +195,7 @@ public class RedBlack<type> implements Tree<type>{
             this.size++;
             return true;
         }
+
         else {
             RBNode<type> ptr1 = this.root;
             RBNode<type> parent = ptr1;
