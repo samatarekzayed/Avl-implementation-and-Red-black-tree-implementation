@@ -339,10 +339,10 @@ public class RedBlack<type> implements Tree<type>{
             if (ptr.compareToKey(k) == 0) {
                 return true;
             } else if (ptr.compareToKey(k) == -1) {
-                System.out.println(ptr.key);
+//                System.out.println(ptr.key);
                 ptr = ptr.right;
             } else {
-                System.out.println(ptr.key);
+//                System.out.println(ptr.key);
                 ptr = ptr.left;
             }
         }
@@ -356,15 +356,15 @@ public class RedBlack<type> implements Tree<type>{
 
     @Override
     public int height() {
-        if(root!=null)
-            return Math.max(height(root.left),height(root.left))+1;
+        if(this.root!=null)
+            return (Math.max(height(this.root.left),height(this.root.right)) + 1);
         else
             return -1;
     }
     private int height(RBNode<type> n) {
         if (n == null)
             return -1;
-        return n.height;
+        return (Math.max(height(n.left),height(n.right)) + 1);
     }
 
 }
