@@ -19,8 +19,6 @@ class Main{
         }
         while (flag){
 
-
-
             System.out.println("\nPlease choose an option: ");
             System.out.print("1- Insert a word\n2- Delete a word\n3- Search for a word\n4- Batch Insert\n5- Batch Delete\n6- Get dictionary size\n7- Get tree Height\n8-exit\n");
             String option_menu2 = sc.next();
@@ -81,7 +79,6 @@ class Main{
                     int[] counters = dictionary.batchInsert(path);
                     long end = System.currentTimeMillis();
 
-                    Mariam, [3/23/2023 10:43 PM]
                     System.out.println(counters[0] + " words inserted " + counters[1] + " words already existed ");
                     System.out.println("Time taken to insert " + (counters[0] + counters[1]) + " words = " + (end - start) + " ms");
 //                    } else {
