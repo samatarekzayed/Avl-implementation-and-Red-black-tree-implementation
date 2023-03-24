@@ -93,4 +93,61 @@ public class services <type>{
         // Process left child
         print2DUtil(root.getLeft(), space);
     }
+
+
+    //function to check if the red black tree is valid or not
+    public boolean isValidRedBlackTree(RBNode<type> root) {
+        // Check if the root node is black
+        if (root == null || root.isRed) {
+            return false;
+        }
+
+        // Check the black height of the tree
+        int blackHeight = getBlackHeight(root);
+        if (blackHeight == -1) {
+            return false;
+        }
+
+        // Check if any red node has a red child
+        if (hasRedRedChild(root)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private int getBlackHeight(RBNode<type> node) {
+        if (node.key == null) {
+            return 0;
+        }
+
+        int leftHeight = getBlackHeight(node.left);
+        int rightHeight = getBlackHeight(node.right);
+
+        if (leftHeight == -1 || rightHeight == -1 || leftHeight != rightHeight) {
+            return -1;
+        }
+
+        return leftHeight + ((!node.isRed) ? 1 : 0);
+    }
+
+    private boolean hasRedRedChild(RBNode<type> node) {
+        if (node.key == null) {
+            return false;
+        }
+
+        if (node.isRed) {
+            if (node.left.key != null && node.left.isRed) {
+                return true;
+            }
+            if (node.right.key != null && node.right.isRed) {
+                return true;
+            }
+        }
+
+        return hasRedRedChild(node.left) || hasRedRedChild(node.right);
+    }
+
+
+
 }
