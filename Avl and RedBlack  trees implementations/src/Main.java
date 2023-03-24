@@ -3,21 +3,24 @@ import java.util.concurrent.TimeUnit;
 import java.lang.InterruptedException;
 class Main{
 
-    public static void menu(IDictionary dictionary) throws InterruptedException {
+    public static void menu(String option) throws InterruptedException {
         boolean flag = true;
-        Scanner sc = new Scanner(System.in);
+
+        while (flag){
+            IDictionary dictionary;
+            Scanner sc = new Scanner(System.in);
 //            dictionary dictionary1 = new dictionary();
 //            redblack_dictionary dictionary2 = new redblack_dictionary();
-        System.out.println("Please choose an your preferred type of dictionary");
-        System.out.println("1- AVL based Dictionary");
-        System.out.println("2- Red Black based Dictionary");
-        String option = sc.next();
-        if(option.equals("1")){
-            dictionary = new dictionary("avl");
-        } else {
-            dictionary = new dictionary("RedBlack");
-        }
-        while (flag){
+//            System.out.println("Please choose an your preferred type of dictionary");
+//            System.out.println("1- AVL based Dictionary");
+//            System.out.println("2- Red Black based Dictionary");
+//            String option = sc.next();
+            if(option.equals("1")){
+                dictionary = new dictionary("avl");
+            } else {
+                dictionary = new dictionary("RedBlack");
+            }
+
 
             System.out.println("\nPlease choose an option: ");
             System.out.print("1- Insert a word\n2- Delete a word\n3- Search for a word\n4- Batch Insert\n5- Batch Delete\n6- Get dictionary size\n7- Get tree Height\n8-exit\n");
@@ -140,42 +143,13 @@ class Main{
 
 
     public static void main(String[] args) throws InterruptedException {
-        IDictionary dictionary = new IDictionary() {
-            @Override
-            public boolean insert(String k) {
-                return false;
-            }
 
-            @Override
-            public boolean delete(String k) {
-                return false;
-            }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please choose an your preferred type of dictionary");
+        System.out.println("1- AVL based Dictionary");
+        System.out.println("2- Red Black based Dictionary");
+        String option = sc.next();
 
-            @Override
-            public boolean search(String k) {
-                return false;
-            }
-
-            @Override
-            public int[] batchInsert(String path) {
-                return new int[0];
-            }
-
-            @Override
-            public int[] batchDelete(String path) {
-                return new int[0];
-            }
-
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public int treeHeight() {
-                return 0;
-            }
-        };
-        menu(dictionary);
+        menu(option);
 
     }}

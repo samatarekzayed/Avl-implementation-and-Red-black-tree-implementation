@@ -458,7 +458,7 @@ public class RedBlack<type> implements Tree<type>{
     @Override
     public boolean search(type k) {
         RBNode<type> ptr = root;
-        while(ptr != null) {
+        while(ptr!=null && ptr != nil) {
             if (ptr.compareToKey(k) == 0) {
                 return true;
             } else if (ptr.compareToKey(k) == -1) {
@@ -481,7 +481,7 @@ public class RedBlack<type> implements Tree<type>{
             return -1;
     }
     private int height(RBNode<type> n) {
-        if (n == null)
+        if (n == nil)
             return -1;
         return (Math.max(height(n.left),height(n.right)) + 1);
     }

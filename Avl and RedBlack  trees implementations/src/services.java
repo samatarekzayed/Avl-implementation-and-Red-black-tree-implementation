@@ -33,9 +33,10 @@ public class services <type>{
     }
 
     ////////////////////////////////////////////////////
-    static final int COUNT = 10;
+
     public void print2DUtil(avlNode<type> root, int space)
     {
+        final int COUNT = 10;
         // Base case
         if (root == null)
             return;
@@ -64,8 +65,10 @@ public class services <type>{
         print2DUtil(root, 0);
     }
 
-    public void print2DUtil(RBNode<type> root, int space)
+    public void print2DUtil(RBNode<type> root)
     {
+        final int COUNT = 10;
+        int space = 0;
         // Base case
         if (root == null)
             return;
@@ -75,7 +78,7 @@ public class services <type>{
 
         // Process right child first
 //        System.out.println(root.key);
-        print2DUtil(root.getRight(), space);
+        print2DUtil(root.getRight());
 
         // Print current node after space
         // count
@@ -91,7 +94,7 @@ public class services <type>{
 
 
         // Process left child
-        print2DUtil(root.getLeft(), space);
+        print2DUtil(root.getLeft());
     }
 
 
