@@ -53,7 +53,6 @@ public class dictionary implements IDictionary {
 		int insert_count=0;
 		int exist_count=0;
 		try{
-			
 			File myfile = new File(path);
 			Scanner myReader = new Scanner(myfile);
 			while(myReader.hasNextLine()){

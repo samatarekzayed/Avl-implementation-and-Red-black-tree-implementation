@@ -5,21 +5,21 @@ class Main{
 
     public static void menu(String option) throws InterruptedException {
         boolean flag = true;
-
-        while (flag){
-            IDictionary dictionary;
-            Scanner sc = new Scanner(System.in);
+        IDictionary dictionary;
+        Scanner sc = new Scanner(System.in);
 //            dictionary dictionary1 = new dictionary();
 //            redblack_dictionary dictionary2 = new redblack_dictionary();
 //            System.out.println("Please choose an your preferred type of dictionary");
 //            System.out.println("1- AVL based Dictionary");
 //            System.out.println("2- Red Black based Dictionary");
 //            String option = sc.next();
-            if(option.equals("1")){
-                dictionary = new dictionary("avl");
-            } else {
-                dictionary = new dictionary("RedBlack");
-            }
+        if(option.equals("1")){
+            dictionary = new dictionary("avl");
+        } else {
+            dictionary = new dictionary("RedBlack");
+        }
+        while (flag){
+
 
 
             System.out.println("\nPlease choose an option: ");
@@ -100,7 +100,7 @@ class Main{
                     int[] counters = dictionary.batchDelete(path);
                     long end = System.currentTimeMillis();
                     System.out.print(counters[0] + " words deleted " + counters[1] + " words not found in dictionary\n");
-                    System.out.println("Time taken to delete from avl-based dictionary "+(end-start)+" ms");
+                    System.out.println("Time taken to delete from  dictionary "+(end-start)+" ms");
 
 //                    } else {
 //                        long start = System.currentTimeMillis();

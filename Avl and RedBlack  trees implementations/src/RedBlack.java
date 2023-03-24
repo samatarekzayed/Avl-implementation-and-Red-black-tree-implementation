@@ -181,8 +181,9 @@ public class RedBlack<type> implements Tree<type>{
 
     @Override
     public boolean insert(type k) {
-        services<type> service = new services();
-        System.out.println(service.isValidRedBlackTree(this.root));
+//        services<type> service = new services();
+//        System.out.println(service.isValidRedBlackTree(this.root));
+        System.out.println(size);
         RBNode<type> newNode = new RBNode<type>(k);
         newNode.left = this.nil;
         newNode.right = this.nil;
@@ -376,7 +377,8 @@ public class RedBlack<type> implements Tree<type>{
     }
     @Override
     public boolean  delete(type key) {
-
+//        System.out.println(key);
+        System.out.println(size);
 
         RBNode<type> root = searchNode(key);
         if (root==null){
