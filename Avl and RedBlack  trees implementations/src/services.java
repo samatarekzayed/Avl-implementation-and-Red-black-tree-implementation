@@ -97,10 +97,16 @@ public class services <type>{
 
     //function to check if the red black tree is valid or not
     public boolean isValidRedBlackTree(RBNode<type> root) {
-        // Check if the root node is black
-        if (root == null || root.isRed) {
+
+        if (root == null) {
+            return true;
+        }
+
+        // Check if the root node is Red
+        if (root.isRed) {
             return false;
         }
+
 
         // Check the black height of the tree
         int blackHeight = getBlackHeight(root);
