@@ -13,9 +13,6 @@ class Main{
             dictionary = new dictionary("RedBlack");
         }
         while (flag){
-
-
-
             System.out.println("\nPlease choose an option: ");
             System.out.print("1- Insert a word\n2- Delete a word\n3- Search for a word\n4- Batch Insert\n5- Batch Delete\n6- Get dictionary size\n7- Get tree Height\n8-exit\n");
             String option_menu2 = sc.next();
@@ -55,11 +52,16 @@ class Main{
                 case "3" ->{
                     System.out.print("Enter a word to search for it: ");
                     String searched = sc.next();
+                    long startTime = System.nanoTime();
+                    boolean result = dictionary.search(searched);
+                    long endTime = System.nanoTime();
                     //if(option.equals("1")) {
-                    if (dictionary.search(searched)) {
+                    if (result) {
                         System.out.print("the word \"" + searched + "\" is found");
                     } else
                         System.out.print("the word \"" + searched + "\" is not found");
+                    System.out.println("Time taken to search " + searched + " words = " + (endTime - startTime) / 1000 + " ms");
+//
 //                    } else {
 //                        if(dictionary2.search(searched)){
 //                            System.out.print("the word \"" + searched + "\" is found");
@@ -115,13 +117,7 @@ class Main{
 
                 case "8" ->
                     flag = false;
-
-
             }
-
-
-
-
         }
         //tree.preorder(tree.root);
         System.out.print("Closing Dictionary");

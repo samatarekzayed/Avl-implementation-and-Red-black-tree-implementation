@@ -1,9 +1,0 @@
-apple
-book
-car
-dog
-egg
-fire
-green
-hall
-island
