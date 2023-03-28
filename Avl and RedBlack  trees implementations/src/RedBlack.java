@@ -378,8 +378,8 @@ public class RedBlack<type> implements Tree<type>{
     @Override
     public boolean  delete(type key) {
 //        System.out.println(key);
-        services s=new services();
-        s.print2DUtil(this.root,0);
+//        services s=new services();
+//        s.print2DUtil(this.root,0);
         RBNode<type> root = searchNode(key);
         if (root==null){
             //node not found
