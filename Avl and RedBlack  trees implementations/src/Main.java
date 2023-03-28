@@ -7,12 +7,6 @@ class Main{
         boolean flag = true;
         IDictionary dictionary;
         Scanner sc = new Scanner(System.in);
-//            dictionary dictionary1 = new dictionary();
-//            redblack_dictionary dictionary2 = new redblack_dictionary();
-//            System.out.println("Please choose an your preferred type of dictionary");
-//            System.out.println("1- AVL based Dictionary");
-//            System.out.println("2- Red Black based Dictionary");
-//            String option = sc.next();
         if(option.equals("1")){
             dictionary = new dictionary("avl");
         } else {
@@ -112,17 +106,17 @@ class Main{
 //                    }
                 }
 
-                case "6" ->{
+                case "6" ->
                     System.out.print("Dictionary contains: "+dictionary.size()+" words");
 
-                }
-                case "7" ->{
+
+                case "7" ->
                     System.out.print("Height of the tree structuring the dictionary is "+dictionary.treeHeight());
-                }
-                case "8" ->{
+
+                case "8" ->
                     flag = false;
 
-                }
+
             }
 
 

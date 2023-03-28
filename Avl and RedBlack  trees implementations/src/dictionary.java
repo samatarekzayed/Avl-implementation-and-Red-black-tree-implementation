@@ -3,18 +3,15 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 public class dictionary implements IDictionary {
 
-	// ya paty sorry 3dlt 3la al file bta3k
-	// ana bs 5alit al dictionary yeb2a avl aw RedBlack 3l4an mn3ml4 etnen dictionary
-	// w wenta bt3ml al dictionary b al constructor bt5tar enta 3ayz avl wla RedBlack
-	// lw ktbt "RedBlack" hy3ml RedBlack tree lw ay 7aga tanya hy3ml AVL tree
+
 	Tree<String> dictionary;
 
 	dictionary(String name){
 		if(name.compareTo("RedBlack")==0){
-			dictionary = new RedBlack<String>();
+			dictionary = new RedBlack<>();
 		}
 		else{
-			dictionary = new avl<String>();
+			dictionary = new avl<>();
 		}
 	}
 
@@ -117,5 +114,5 @@ public class dictionary implements IDictionary {
 	 */
 	@Override
 	public int treeHeight() {return dictionary.height();}
-//	public void Orderlist(){dictionary.inorder(dictionary.root);}
+//	public void Order_list(){dictionary.inorder(dictionary.root);}
 }

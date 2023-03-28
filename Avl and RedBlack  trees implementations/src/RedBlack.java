@@ -183,7 +183,7 @@ public class RedBlack<type> implements Tree<type>{
     public boolean insert(type k) {
 //        services<type> service = new services();
 //        System.out.println(service.isValidRedBlackTree(this.root));
-        System.out.println(size);
+        //System.out.println(size);
         RBNode<type> newNode = new RBNode<type>(k);
         newNode.left = this.nil;
         newNode.right = this.nil;
@@ -309,8 +309,8 @@ public class RedBlack<type> implements Tree<type>{
         }
     }
     private RBNode<type> inorderSucessor(RBNode<type> n){
-        while (n.left!=nil){
-            n=n.left;
+        while (n.right!=nil){
+            n=n.right;
         }
         return n;
     }
@@ -396,7 +396,7 @@ public class RedBlack<type> implements Tree<type>{
         if(root.left!=nil && root.right!=nil)
         {
             //the node is internal
-            RBNode<type> temp = inorderSucessor(root.right);
+            RBNode<type> temp = inorderSucessor(root.left);
             // swap the value of this internal node with value if its inorder successor
             type t= temp.key;
             temp.key= root.key;

@@ -65,10 +65,10 @@ public class services <type>{
         print2DUtil(root, 0);
     }
 
-    public void print2DUtil(RBNode<type> root)
+    public void print2DUtil(RBNode<type> root, int space)
     {
         final int COUNT = 10;
-        int space = 0;
+
         // Base case
         if (root == null)
             return;
@@ -78,7 +78,7 @@ public class services <type>{
 
         // Process right child first
 //        System.out.println(root.key);
-        print2DUtil(root.getRight());
+        print2DUtil(root.getRight(),space);
 
         // Print current node after space
         // count
@@ -94,7 +94,8 @@ public class services <type>{
 
 
         // Process left child
-        print2DUtil(root.getLeft());
+        print2DUtil(root.getLeft(),space);
+
     }
     public boolean isValidAvlTree(avlNode<type> root) {
         if (root == null) {
