@@ -64,7 +64,6 @@ line. And tries to delete all that words from the dictionary.
 8. Tree Height: Returns the height of the dictionary backend tree.
 
 2
-
 Alexandria University
 Faculty of Engineering
 Computer and Systems Engineering
