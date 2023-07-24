@@ -1,27 +1,15 @@
+AVL and Red-Black Tree Implementations
+======================================
+
+Introduction
+------------
+
+This project provides implementations of two types of self-balancing binary search trees: AVL Trees and Red-Black Trees. These tree structures are designed to maintain balance, which helps ensure fast search, insertion, and deletion operations.
+
 # Avl-implementation-and-Red-black-tree-implementation
 Avl implementation and red black tree implementation
 Implementing Self Balanced BSTs (AVL & Red Black)
 
-1 Introduction
-1.1 AVL Tree
-An AVL (Adelson-Velskii and Landis) tree is a binary search tree with a balance condition.
-The balance condition is easy to maintain, and it ensures that the depth of the tree is O(log
-n). An AVL tree is identical to a binary search tree, except that for every node in the tree, the
-height of the left and right subtrees can differ by at most 1. Balancing information is kept for
-each node (in the node structure).
-All the tree operations can be performed in O(log n) time. The reason that insertions and
-deletions are potentially difficult is that the operation could violate the AVL tree property.
-The balance of an AVL tree can be maintained with a simple modification to the tree, known
-as a rotation.
-1.2 Red Black Tree
-A red black tree is a kind of self-balancing binary search tree in computer science. Each node of
-the binary tree has an extra bit, and that bit is often interpreted as the color (red or black) of
-the node. These color bits are used to ensure the tree remains approximately balanced during
-insertions and deletions. Balance is preserved by painting each node of the tree with one of two
-colors in a way that satisfies certain properties, which collectively constrain how unbalanced
-the tree can become in the worst case. When the tree is modified, the new tree is subsequently
-rearranged (using rotation) and repainted to restore the coloring properties. The properties are
-designed in such a way that this rearranging and recoloring can be performed efficiently.
 
 1
 
