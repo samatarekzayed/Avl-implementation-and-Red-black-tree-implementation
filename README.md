@@ -46,45 +46,7 @@ The English dictionary implementation is built using the self-balancing binary
 All operations on the dictionary have the same time complexity as the corresponding tree operations.
 
 
-Requirements met
-2.1 Trees Operations
-You are required to implement both AVL and Red Black trees that can deal with keys of any
-comparable type (generic). You need to implement the following operations in both of them:
-1. Insert: Takes a key and inserts it if it is not in the tree. Returns true if it is added and
-false if it already exists. Must run in O(log n)
-2. Delete: Takes a key and deletes it if it is in the tree. Returns true if it is deleted and false
-if it is not in the tree. Must run in O(log n).
-3. Search: Takes a key and searches for it returning true if it is found in the tree and false
-otherwise. Must run in O(log n).
-4. Size: Returns the number of keys in the tree. Must run in O(1).
-5. Height: Returns the height of the tree which is the longest path from the root to a leaf
-node. Can run up to O(n).
-2.2 Application: English Dictionary
-As an application based on the 2 self balanced binary search trees implementation, you are
-required to implement a simple English dictionary supporting the following functionalities:
-1. Initialize (constructor): Takes the name of the type of the backend tree as an input and
-create a new empty dictionary based on it.
-2. Insert: Takes a single string key and tries to insert it.
-3. Delete: Takes a single string key and tries to delete it.
-4. Search: Takes a single string key, searches for it and return true if it exists and false
-otherwise.
-5. Batch insert: Takes a path to a text file containing multiple words each in a separate line.
-And tries to insert all that words in the dictionary.
-6. Batch delete: Takes a path to a text file containing multiple words each in a separate
-line. And tries to delete all that words from the dictionary.
-7. Size: Returns the number of string keys in the dictionary.
-8. Tree Height: Returns the height of the dictionary backend tree.
 
-2
-
-Alexandria University
-Faculty of Engineering
-Computer and Systems Engineering
-Department
-
-File Structures Course
-Assigned: Monday, March 13, 2023
-Due: Wednesday, March 22, 2023
 
 2.3 Command Line Interface
 You should implement a command line interface that will enable us to deal with the dictionary
