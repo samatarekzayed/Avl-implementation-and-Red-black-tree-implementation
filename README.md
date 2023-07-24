@@ -16,9 +16,8 @@ Red-Black Tree
 
 A Red-Black tree is a kind of self-balancing binary search tree in computer science. Each node of the binary tree has an extra bit, and that bit is often interpreted as the color (red or black) of the node. These color bits are used to ensure the tree remains approximately balanced during insertions and deletions. Balance is preserved by painting each node of the tree with one of two colors in a way that satisfies certain properties, which collectively constrain how unbalanced the tree can become in the worst case. When the tree is modified, the new tree is subsequently rearranged (using rotation) and repainted to restore the coloring properties. The properties are designed in such a way that this rearranging and recoloring can be performed efficiently.
 
-# Avl-implementation-and-Red-black-tree-implementation
-Avl implementation and red black tree implementation
-Implementing Self Balanced BSTs (AVL & Red Black)
+**This project provides an implementation of a simple English dictionary using two types of self-balancing binary search trees: AVL Trees and Red-Black Trees. The dictionary supports insertion, deletion, and search operations for single string keys, as well as batch insert and delete operations for multiple words contained in a text file.**
+
 
 
 1
@@ -32,7 +31,7 @@ File Structures Course
 Assigned: Monday, March 13, 2023
 Due: Wednesday, March 22, 2023
 
-2 Requirements
+Requirements met
 2.1 Trees Operations
 You are required to implement both AVL and Red Black trees that can deal with keys of any
 comparable type (generic). You need to implement the following operations in both of them:
