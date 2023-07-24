@@ -29,7 +29,21 @@ Both AVL and Red-Black trees are implemented to deal with keys of any comparable
 4.  Size: Returns the number of keys in the tree. Must run in O(1).
 5.  Height: Returns the height of the tree which is the longest path from the root to a leaf node. Can run up to O(n).
 
+English Dictionary
+------------------
 
+The English dictionary implementation is built using the self-balancing binary search trees provided. It supports the following functionalities:
+
+1.  Initialize: Takes the name of the type of the backend tree as an input and create a new empty dictionary based on it.
+2.  Insert: Takes a single string key and tries to insert it.
+3.  Delete: Takes a single string key and tries to delete it.
+4.  Search: Takes a single string key, searches for it and return true if it exists and false otherwise.
+5.  Batch insert: Takes a path to a text file containing multiple words each in a separate line. And tries to insert all that words in the dictionary.
+6.  Batch delete: Takes a path to a text file containing multiple words each in a separate line. And tries to delete all that words from the dictionary.
+7.  Size: Returns the number of string keys in the dictionary.
+8.  Tree Height: Returns the height of the dictionary backend tree.
+
+All operations on the dictionary have the same time complexity as the corresponding tree operations.
 
 1
 
