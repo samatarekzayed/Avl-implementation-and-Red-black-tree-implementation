@@ -45,16 +45,6 @@ The English dictionary implementation is built using the self-balancing binary
 
 All operations on the dictionary have the same time complexity as the corresponding tree operations.
 
-1
-
-Alexandria University
-Faculty of Engineering
-Computer and Systems Engineering
-Department
-
-File Structures Course
-Assigned: Monday, March 13, 2023
-Due: Wednesday, March 22, 2023
 
 Requirements met
 2.1 Trees Operations
