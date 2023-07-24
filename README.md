@@ -18,6 +18,17 @@ A Red-Black tree is a kind of self-balancing binary search tree in computer scie
 
 **This project provides an implementation of a simple English dictionary using two types of self-balancing binary search trees: AVL Trees and Red-Black Trees. The dictionary supports insertion, deletion, and search operations for single string keys, as well as batch insert and delete operations for multiple words contained in a text file.**
 
+Tree Operations
+---------------
+
+Both AVL and Red-Black trees are implemented to deal with keys of any comparable type (generic). The following operations are implemented for both trees:
+
+1.  Insert: Takes a key and inserts it if it is not in the tree. Returns true if it is added and false if it already exists. Must run in O(log n).
+2.  Delete: Takes a key and deletes it if it is in the tree. Returns true if it is deleted and false if it is not in the tree. Must run in O(log n).
+3.  Search: Takes a key and searches for it returning true if it is found in the tree and false otherwise. Must run in O(log n).
+4.  Size: Returns the number of keys in the tree. Must run in O(1).
+5.  Height: Returns the height of the tree which is the longest path from the root to a leaf node. Can run up to O(n).
+
 
 
 1
