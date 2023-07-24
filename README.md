@@ -47,30 +47,19 @@ All operations on the dictionary have the same time complexity as the correspo
 
 
 
+Command Line Interface
+----------------------
 
-2.3 Command Line Interface
-You should implement a command line interface that will enable us to deal with the dictionary
-and apply all its implemented operations. This interface must take the type of the backend tree
+The command line interface enables us to deal with the dictionary
+and apply all its implemented operations. This interface takes the type of the backend tree
 as an initial input then creates a dictionary based on it and allow the user to apply subsequent
 operations on it from the following list:
-1. Insert a string and prints a confirmation message or an error one if the the string already
-exists in the dictionary.
-2. Delete a string and prints a confirmation message or an error one if the the string doesn’t
-exist in the dictionary.
+
+1. Insert a string and prints a confirmation message or an error one if the the string already exists in the dictionary.
+2. Delete a string and prints a confirmation message or an error one if the the string doesn't exist in the dictionary.
 3. Search for a string and print whether it exists in the dictionary or not.
-4. Batch insert a list of strings taking the path of the file containing these strings and prints
-the number of newly added strings and the number of already existing ones.
-5. Batch delete a list of strings taking the path of the file containing these strings and prints
-the number of deleted strings and the number of non existing ones.
+4. Batch insert a list of strings taking the path of the file containing these strings and prints the number of newly added strings and the number of already existing ones.
+5. Batch delete a list of strings taking the path of the file containing these strings and prints the number of deleted strings and the number of non existing ones.
 6. Get the size of the dictionary and print it.
 7. Get the height of the backend tree and print it.
-2.4 Java Unit Testing
-You should provide a set of 15-20 JUnit tests that tests the correctness and effeciency of the
-different implemented parts. Also, these tests must show a comprehensive comparison between
-the 2 types of binary search trees w.r.t time and tree height factors.
-3 Notes
-• You need to work in teams of 4 or 5.
-• You need to use Java in your implementation.
-• Each team should submit via teams the code and a report explaining the time analysis
-of the implemented functions in addition to a comparison between the 2 trees at different
-tree sizes w.r.t the tree height and the mean insert and delete time.
+   
