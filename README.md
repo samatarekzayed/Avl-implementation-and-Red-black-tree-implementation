@@ -62,4 +62,11 @@ operations on it from the following list:
 5. Batch delete a list of strings taking the path of the file containing these strings and prints the number of deleted strings and the number of non existing ones.
 6. Get the size of the dictionary and print it.
 7. Get the height of the backend tree and print it.
+
+Java Unit Testing
+------------------
+
+a set of 15-20 JUnit tests are provided that tests the correctness and effeciency of the
+different implemented parts. They show a comprehensive comparison between
+the 2 types of binary search trees w.r.t time and tree height factors.
    
